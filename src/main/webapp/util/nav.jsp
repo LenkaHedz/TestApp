@@ -8,7 +8,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="${pageContext.request.contextPath}/index.jsp"> <fmt:message key="navbar.home" /> </a></li>
+                <li> <span class="glyphicon glyphicon-check"></span>
+                    <fmt:message key="navbar.home"/></li>
                 <li>
                     <br>
                     <form>
