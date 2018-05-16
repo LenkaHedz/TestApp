@@ -30,6 +30,7 @@ public class AuthFilter implements Filter {
         System.out.println(context.getAttribute(AttributeNames.LOGGED_USERS));
 
         filterChain.doFilter(request,response);
+
     }
 
     @Override

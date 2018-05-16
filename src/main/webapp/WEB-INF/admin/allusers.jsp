@@ -35,7 +35,7 @@
     </table>
 
     <br>
-    <a href="${pageContext.request.contextPath}/app/alltariffs">Show Tariffs</a>
+    <a href="${pageContext.request.contextPath}/alltariffs">Show Tariffs</a>
     <br/>
 
 </body>

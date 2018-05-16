@@ -44,6 +44,11 @@
         <location>/error.jsp</location>
     </error-page>
 
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 
 

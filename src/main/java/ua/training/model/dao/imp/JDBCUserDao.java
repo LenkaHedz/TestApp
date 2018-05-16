@@ -33,6 +33,11 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public void create(String login, String password, User.Role role, String name) {
+        System.out.println(login.toLowerCase());
+        System.out.println(password);
+        System.out.println(firstUpperCase(role.toString()));
+        System.out.println(name);
+
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_CREATE)){
             ps.setString(1 , login.toLowerCase());
             ps.setString(2 , password);
@@ -150,6 +155,6 @@ public class JDBCUserDao implements UserDao {
         if(word == null || word.isEmpty()){
             return "";
         }
-        return word.substring(0, 1).toUpperCase().concat(word.substring(1));
+        return word.substring(0, 1).toUpperCase().concat(word.substring(1).toLowerCase());
     }
 }

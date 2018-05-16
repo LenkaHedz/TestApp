@@ -10,6 +10,9 @@ public class LogoutCommand implements Command {
     public String execute(HttpServletRequest request) {
         //HttpSession session = request.getSession();
         //session.removeAttribute(AttributeNames.USER);
+
+        System.out.println("111");
+
         CommandUtility.setUserRole(request, User.Role.GUEST, AttributeNames.GUEST);
         return "redirect:/index.jsp"; /*PageNames.INDEX;*/
     }

@@ -8,13 +8,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"> <fmt:message key="navbar.home" /> </a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/index.jsp"> <fmt:message key="navbar.home" /> </a></li>
                 <li>
                     <br>
-                    <select class="form-control" id="language" name="language" onchange="submit()">
-                        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
-                    </select>
+                    <form>
+                        <select id="language" name="language" onchange="submit()">
+                             <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                             <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
+                        </select>
+                    </form>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

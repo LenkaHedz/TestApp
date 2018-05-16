@@ -22,17 +22,19 @@ String getFormattedDate(){
 
             <ul class="nav navbar-nav">
 
-                <li class="active"><a href="#"> <fmt:message key="navbar.home" /> </a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/index.jsp"> <fmt:message key="navbar.home" /> </a></li>
+
+                <li>Date: <%= getFormattedDate() %></li>
 
                 <li class="dropdown">
                     <br>
-                    <select class="form-control" id="language" name="language" onchange="submit()">
+                    <form>
+                    <select id="language" name="language" onchange="submit()">
                         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                         <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
                     </select>
+                    </form>
                 </li>
-
-                <li>Date: <%= getFormattedDate() %></li>
 
             </ul>
 
