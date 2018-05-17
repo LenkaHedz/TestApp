@@ -1,5 +1,7 @@
 package ua.training.model.entity;
 
+import ua.training.model.service.UserDaoService;
+
 import java.util.Objects;
 
 public class User {
@@ -19,7 +21,7 @@ public class User {
         this.password = password;
         this.role = role;
         this.name = name;
-        this.ball = 0;
+        this.ball = this.calcBall(id);
     }
 
     public User(long id, String login, String password, Role role, String name, int ball) {
@@ -36,6 +38,7 @@ public class User {
     }
 
     public void setId(long id) {
+        this.ball = this.calcBall(id);
         this.id = id;
     }
 
@@ -80,6 +83,10 @@ public class User {
     }
 
     public boolean isAdmin() {return role == Role.ADMIN; }
+
+    public int calcBall(long id) {
+        return UserDaoService.getUserBall(id);
+    }
 
     @Override
     public boolean equals(Object o) {
