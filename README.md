@@ -1,6 +1,5 @@
-# FINAL PROJECT: TestApp
+# FINAL PROJECT: Fast Student Testing System
 
-Fast Student Testing System 
 A student has to registered by e-mail. The results of the test will be sent on that e-mail. 
 The system contains a catalog of tests by topics. An authorized student can pass the tests. 
 When test are complete the student is shown the page with all the errors.
