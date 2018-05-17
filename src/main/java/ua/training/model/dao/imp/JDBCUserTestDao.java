@@ -74,6 +74,21 @@ public class JDBCUserTestDao implements UserTestDao {
     }
 
     @Override
+    public List<UserTest> findByUser(long iduser) {
+        List<UserTest> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_FIND_BY_USER_ID)){
+            ps.setLong(1, iduser);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
+    }
+
+    @Override
     public void update(UserTest userTest){
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_UPDATE)){
         ps.setLong(1 , userTest.getUser().getId());
