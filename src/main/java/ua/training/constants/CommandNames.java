@@ -11,5 +11,5 @@ public interface CommandNames {
     String GO_TEST       = "gotest";
     String TESTS_TO_GO   = "teststogo";
     String USER_TESTS    = "usertests";
-    String SEND_MAIL     = "sendmail";
+    String SEND_ON_MAIL  = "sendonmail";
 }
