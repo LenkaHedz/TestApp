@@ -23,6 +23,4 @@ public interface PageNames {
     String TEST_PAGE   = "/WEB-INF/user/testpage.jsp";
 
     String USER_TESTS  = "/WEB-INF/user/usertests.jsp";
-    
-    String SEND_ON_MAIL  = "/WEB-INF/user/sendonmail.jsp";
 }
