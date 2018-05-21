@@ -3,54 +3,54 @@
 
 <html>
 <body>
-<%@ include file="/util/nav.jsp" %>
+<%@ include file="/util/navuser.jsp" %>
 
-<div class="container-fluid">
-    <div class="row content">
+   <div class="container text-left">
+      <div class="row">
+         <div class="col-lg-6">
 
-        <%@ include file="/util/sidebar.jsp" %>
+         <br>
+         <fmt:message key="pasttest.findbyname"/>
+         <form method="GET" action="${pageContext.request.contextPath}/searchtest">
+             <input type="text" name="name" size="50"><button class="btn btn-info" type="submit"> <fmt:message key="pasttest.show"/></button>
+         </form>
+         <br>
 
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-6">
+         <i><fmt:message key="pasttest.count"/> "${requestScope.allTestsCount}"</i>
+         <br>
+         <br>
 
-                        <br>
-                           Find by name
-                             <form method="GET" action="${pageContext.request.contextPath}/searchtest">
-                                <input type="text" name="name" size="125">
-                                <input type="submit" value="Show" >
-                             <button class="btn btn-info" type="submit">Sort</button>
-                             </form>
-                        <br>
+              <table id="example" class="table table-striped table-bordered" style="width:100%">
+                   <thead>
+                        <tr>
+                            <th><fmt:message key="pasttest.num"/></th>
+                            <th><fmt:message key="pasttest.category"/></th>
+                            <th><fmt:message key="pasttest.name"/></th>
+                            <th><fmt:message key="pasttest.description"/></th>
+                            <th><fmt:message key="pasttest.action"/></th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                        <c:forEach items="${requestScope.testList}" var="testList">
+                        <tr>
+                            <td>${testList.id}</td>
+                            <td>${testList.category}</td>
+                            <td>${testList.name}</td>
+                            <td>${testList.description}</td>
+                            <td>
+                               <form method="post" action="${pageContext.request.contextPath}/gotest">
+                                  <button class="btn btn-info" type="submit" name="idtest" value="${testList.id}" name="num" value="0"> <fmt:message key="pasttest.pastTest"/></button>
+                               </form>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                   </tbody>
+              </table>
+              </ul>
 
-                        <i>Count of Tariffs = "${requestScope.allTestsCount}"</i>
-                        <br>
-                        <br>
-
-
-                        <ul class="list-group">
-                            <c:forEach var="test" items="${requestScope.testList}">
-                                <li class="list-group-item">
-                                    <button class="btn btn-info" data-toggle="collapse" data-target="#${test.id}">
-                                        <c:out value="${test.id}"/> :  <c:out value="${account.balance}"/>
-                                    </button>
-
-                                    <div id="${test.id}" class="collapse">
-                                            <p>
-                                                Category: <c:out value="${test.category}"/> ;
-                                                <br>
-                                                Name: <c:out value="${test.name}"/> ;
-                                                <br>
-                                                Description:  <c:out value="${test.description}"/>
-                                            </p>
-                                    </div>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-            </div>
-        </div>
-</div>
+         </div>
+      </div>
+   </div>
 
     <%@ include file="/util/footer.jsp" %>
 </body>

@@ -1,7 +1,16 @@
 .headtext {
     text-align: center;
+    color: #2566e5;
 }
 
 footer {
     background-color: #f2f2f2;
 }
+
+.imgstype {
+    text-align: center;
+}
+
+.conteinerd {
+  width: 100%
+};

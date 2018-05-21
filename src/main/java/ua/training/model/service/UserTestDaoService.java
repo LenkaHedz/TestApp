@@ -12,6 +12,8 @@ public class UserTestDaoService {
 
     public static void create(UserTest userTest) { dao.create(userTest); }
 
+    public static UserTest createById(long userId, long testId) { return dao.createById(userId, testId); }
+
     public static UserTest findById(long id) { return dao.findById(id); }
 
     public static List<UserTest> findAll() { return dao.findAll(); }

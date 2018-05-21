@@ -16,6 +16,8 @@ public class AnswerDaoService {
 
     public static List<Answer> findAll() { return dao.findAll(); }
 
+    public static List<Answer> findByIdQuestion(long idquestion) { return dao.findByIdQuestion(idquestion); }
+
     public static void update(Answer answer){ dao.update(answer); }
 
     public static void delete(long id) { dao.delete(id); }

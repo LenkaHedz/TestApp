@@ -24,6 +24,7 @@ D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\QuestionBuild
 D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\UserTestDaoService.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\LoginCommand.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\UserAnswer.java
+D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\user\UserTests.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\DBProperties.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\ExceptionCommand.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\CommandUtility.java
@@ -37,6 +38,7 @@ D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\AnswerBuilder
 D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\EncodingTypes.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\User.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\LogoutCommand.java
+D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\TestingDaoService.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCDaoFactory.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\filter\AuthFilter.java
 D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\ResponseMessages.java

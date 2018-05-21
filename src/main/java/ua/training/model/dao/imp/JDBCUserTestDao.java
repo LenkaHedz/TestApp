@@ -35,6 +35,33 @@ public class JDBCUserTestDao implements UserTestDao {
     }
 
     @Override
+    public UserTest createById(long userId, long testId) {
+        LocalDate datePass = LocalDate.now();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_CREATE)){
+            ps.setLong(1 , userId);
+            ps.setLong(2 , testId);
+            ps.setDate(3 , Date.valueOf(datePass));
+            ps.setInt(4 , 0);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_FIND_BY_VALUE)){
+            ps.setLong(1, userId);
+            ps.setLong(2, testId);
+            ps.setDate(3, Date.valueOf(datePass));
+            ResultSet rs = ps.executeQuery();
+            if( rs.next() ){
+                return extractFromResultSet(rs);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+
+    }
+
+    @Override
     public UserTest findById(long id) {
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_FIND_BY_ID)){
             ps.setLong(1, id);

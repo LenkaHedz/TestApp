@@ -13,14 +13,14 @@ public interface PageNames {
     String LOGIN          = "/login.jsp";
     String REGISTRATION   = "/registration.jsp";
 
-    String USER_MENU            = "/WEB-INF/user/user-menu.jsp";
-    String ADMIN_MENU           = "/WEB-INF/admin/admin-menu.jsp";
-
-    String REDIRECT_USER_MENU   = "redirect:/WEB-INF/user/user-menu.jsp";
-    String REDIRECT_ADMIN_MENU  = "redirect:/WEB-INF/admin/admin-menu.jsp";
+    String USER_INDEX     = "/WEB-INF/user/userindex.jsp";
+    String ADMIN_INDEX    = "/admin/menu";
 
     String ALL_USERS   = "/WEB-INF/admin/allusers.jsp";
     String ALL_TESTS   = "/WEB-INF/admin/alltests.jsp";
 
     String TESTS_TO_GO = "/WEB-INF/user/teststogo.jsp";
+    String TEST_PAGE   = "/WEB-INF/user/testpage.jsp";
+
+    String USER_TESTS  = "/WEB-INF/user/usertests.jsp";
 }

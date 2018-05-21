@@ -99,4 +99,20 @@ public class JDBCAnswerDao implements AnswerDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<Answer> findByIdQuestion(long idquestion) {
+        List<Answer> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.ANSWER_FIND_BY_ID_QUESTION)){
+
+            ps.setLong(1, idquestion);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
+    }
 }

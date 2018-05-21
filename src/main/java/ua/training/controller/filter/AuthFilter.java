@@ -1,7 +1,5 @@
 package ua.training.controller.filter;
 
-import ua.training.constants.AttributeNames;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,19 +16,11 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest request,
                          ServletResponse response,
                          FilterChain filterChain) throws IOException, ServletException {
-
         final HttpServletRequest req = (HttpServletRequest) request;
         final HttpServletResponse res = (HttpServletResponse) response;
-
         HttpSession session = req.getSession();
         ServletContext context = session.getServletContext();
-
-        System.out.println(session);
-        System.out.println(session.getAttribute(AttributeNames.ROLE));
-        System.out.println(context.getAttribute(AttributeNames.LOGGED_USERS));
-
         filterChain.doFilter(request,response);
-
     }
 
     @Override

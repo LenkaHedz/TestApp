@@ -7,4 +7,5 @@ public interface UserDao extends GenericDao<User>{
     User login(String username, String password);
     boolean userExists(String username);
     int getUserBall(long id);
+
 }

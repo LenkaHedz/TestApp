@@ -1,4 +1,5 @@
 ua\training\model\service\UserDaoService.class
+ua\training\controller\command\user\UserTests.class
 ua\training\constants\ResponseMessages.class
 ua\training\model\dao\imp\JDBCQuestionDao.class
 ua\training\model\dao\imp\JDBCUserAnswerDao.class
@@ -15,6 +16,7 @@ ua\training\controller\util\DataValidator.class
 ua\training\model\entity\UserTest.class
 ua\training\constants\AttributeNames.class
 ua\training\model\entity\Test.class
+ua\training\model\service\TestingDaoService.class
 ua\training\model\entity\builder\UserAnswerBuilder.class
 ua\training\model\dao\GenericDao.class
 ua\training\model\dao\imp\JDBCAnswerDao.class

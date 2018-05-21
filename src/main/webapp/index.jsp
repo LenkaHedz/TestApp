@@ -14,16 +14,18 @@
         <div class="collapse navbar-collapse" id="myNavbar">
 
             <ul class="nav navbar-nav">
-
-                <li> <span class="glyphicon glyphicon-check"></span>
-                    <fmt:message key="navbar.home"/></li>
+                <li>
+                    <br>
+                    <span class="glyphicon glyphicon-check"></span>
+                </li>
 
                 <li class="dropdown">
                     <br>
                     <form>
                     <select id="language" name="language" onchange="submit()">
-                        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
+                       <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                       <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
+
                     </select>
                     </form>
                 </li>
@@ -44,15 +46,10 @@
 </nav>
 
 <div class="headtext"><h1><fmt:message key="index.name.page"/></h1></div>
+<div class="headtext"><h2><fmt:message key="index.text.page"/></h2></div>
 <br>
 
-<a href="${pageContext.request.contextPath}/allusers">Show Users</a>
-<br>
-
-<a href="${pageContext.request.contextPath}/alltests">Show Tests</a>
-<br>
-
-<img style="height: 400px;" align="middle" src="${pageContext.request.contextPath}/util/test.jpg" class="rounded mx-auto d-block" alt="Test">
+<div class="imgstype"><img style="height: 400px;" src="${pageContext.request.contextPath}/util/test.jpg" class="rounded mx-auto d-block" alt="Test"></div>
 
 </div><br>
 

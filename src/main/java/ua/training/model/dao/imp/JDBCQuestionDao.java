@@ -95,4 +95,20 @@ public class JDBCQuestionDao implements QuestionDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<Question> findByIdTest(long idtest) {
+        List<Question> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.QUESTION_FIND_BY_ID_TEST)){
+            ps.setLong(1, idtest);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
+    }
+
 }

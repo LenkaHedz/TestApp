@@ -8,8 +8,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li> <span class="glyphicon glyphicon-check"></span>
-                    <fmt:message key="navbar.home"/></li>
+                <li>
+                    <br>
+                    <span class="glyphicon glyphicon-check"></span>
+                </li>
                 <li>
                     <br>
                     <form>

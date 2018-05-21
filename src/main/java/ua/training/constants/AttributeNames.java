@@ -1,6 +1,8 @@
 package ua.training.constants;
 
 public interface AttributeNames {
+    String ID                 = "id";
+    String NUM                = "num";
     String LOGIN              = "login";
     String NAME               = "name";
     String PASSWORD           = "password";
@@ -15,14 +17,16 @@ public interface AttributeNames {
     String LOGGED_USERS       = "loggedUsers";
     String LOGGED_USERS_COUNT = "countOfUsers";
 
-
     String LANGUAGE           = "language";
+    String REFERER            = "Referer";
 
     String WRONG_INPUT_MESSAGE = "wrongUserInputMessage";
 
     String ALL_TESTS_COUNT     = "allTestsCount";
-    String TEST_LIST          = "testList";
+    String TEST_LIST           = "testList";
 
     String USER_LIST           = "userList";
+
+    String ID_TEST = "idtest";
 
 }

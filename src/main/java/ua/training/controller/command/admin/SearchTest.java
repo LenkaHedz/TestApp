@@ -17,6 +17,6 @@ public class SearchTest implements Command {
         List<Test> testList = testService.findByName(name);
         request.setAttribute(AttributeNames.ALL_TESTS_COUNT, testList.size());
         request.setAttribute(AttributeNames.TEST_LIST, testList);
-        return PageNames.ALL_TESTS;
+        return PageNames.TESTS_TO_GO;
     }
 }

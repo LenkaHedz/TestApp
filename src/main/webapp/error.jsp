@@ -3,8 +3,6 @@
 <%@ page language="java" isErrorPage="true"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
 
-
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +15,7 @@
 </h2>
 <br>
 
-<img style="height: 250px;" align="middle" src="${pageContext.request.contextPath}/util/error.jpg" class="rounded mx-auto d-block" alt="Error">
+<div class="imgstype"><img style="height: 250px;" src="${pageContext.request.contextPath}/util/error.jpg" class="rounded mx-auto d-block" alt="Error"></div>
 <br>
 
 <a href="${pageContext.request.contextPath}/index.jsp">Index</a>

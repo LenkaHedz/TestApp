@@ -20,3 +20,5 @@ Technologies used:
 - JUnit
 - Pagination
 - Transaction
+
+Maven aplication
