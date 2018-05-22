@@ -1,12 +1,14 @@
 package ua.training.controller;
 
+import ua.training.constants.PageNames;
 import ua.training.controller.command.*;
 import ua.training.constants.AttributeNames;
 import ua.training.constants.CommandNames;
 import ua.training.controller.command.admin.AllTests;
 import ua.training.controller.command.admin.AllUsers;
-import ua.training.controller.command.admin.SearchTest;
+import ua.training.controller.command.user.SearchTest;
 import ua.training.controller.command.user.GoTest;
+import ua.training.controller.command.user.SendToMail;
 import ua.training.controller.command.user.TestsToGo;
 import ua.training.controller.command.user.UserTests;
 
@@ -27,21 +29,22 @@ public class Servlet extends HttpServlet {
         commands.put(CommandNames.LOGIN, new LoginCommand());
         commands.put(CommandNames.LOGOUT, new LogoutCommand());
         commands.put(CommandNames.EXCEPTION, new ExceptionCommand());
+        commands.put(CommandNames.GO_HOME, new GoHome());
 
         commands.put(CommandNames.USER_TESTS, new UserTests());
         commands.put(CommandNames.TESTS_TO_GO, new TestsToGo());
+        commands.put(CommandNames.SEARCH_TEST, new SearchTest());
         commands.put(CommandNames.GO_TEST, new GoTest());
+        commands.put(CommandNames.SEND_TO_MAIL, new SendToMail());
 
         commands.put(CommandNames.ALL_USERS, new AllUsers());
         commands.put(CommandNames.ALL_TESTS, new AllTests());
-        commands.put(CommandNames.SEARCH_TEST, new SearchTest());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
-
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
@@ -50,27 +53,13 @@ public class Servlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*String path = request.getRequestURI();
-        System.out.println("path:" + path);
-        path = path.replaceAll(PageNames.API , PageNames.REPLACE);
-        System.out.println("path:" + path);
-        Command command = commands.getOrDefault(path ,
-                (r)-> PageNames.INDEX);
-        System.out.println("command:" + command.getClass().getName());
-        String page = command.execute(request);
-        System.out.println(page);
-        if(page.contains(PageNames.REDIRECT)){
-            response.sendRedirect(page.replace(PageNames.REDIRECT_TO, PageNames.API));
-        }else {
-            request.getRequestDispatcher(page).forward(request, response);
-        }*/
         String path = request.getRequestURI();
-        path = path.replaceAll(".*/test/" , "");
+        path = path.replaceAll(PageNames.API , PageNames.REPLACE);
         Command command = commands.getOrDefault(path,
-                (r)->"/index.jsp");
+                (r)-> PageNames.INDEX);
         String page = command.execute(request);
-        if(page.contains("redirect")){
-            response.sendRedirect(page.replace("redirect:", ""));
+        if(page.contains(PageNames.REDIRECT)){
+            response.sendRedirect(page.replace(PageNames.REDIRECT_TO, PageNames.REPLACE));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }

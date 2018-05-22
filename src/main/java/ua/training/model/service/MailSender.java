@@ -9,26 +9,18 @@ import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class MailSender {
-    private String username;
-    private String password;
-    private Properties props;
 
-    public MailSender(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public static void send(String subject, String text, String toEmail) {
+        Properties props = new Properties();
+        props.put(MailConstants.host_name, MailConstants.host_value);
+        props.put(MailConstants.port_sfname, MailConstants.port_sfvalue);
+        props.put(MailConstants.soket_name, MailConstants.soket_value);
+        props.put(MailConstants.auth_name, MailConstants.auth_value);
+        props.put(MailConstants.port_name, MailConstants.port_value);
 
-        props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-    }
-
-    public void send(String subject, String text, String toEmail) {
         Session session = Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(MailConstants.address_from, MailConstants.password);
             }
         });
 

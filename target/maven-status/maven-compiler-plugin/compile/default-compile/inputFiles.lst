@@ -1,62 +1,64 @@
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\Registration.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\TestDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\Command.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\filter\EncodingFilter.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\UserBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\PageNames.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserTestDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCTestDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\util\DataValidator.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\UserDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\Queries.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\Servlet.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\listener\SessionListener.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\QuestionDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\MailSender.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserAnswerDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\user\TestsToGo.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\GenericDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\QuestionDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\TestBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\UserDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\Question.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\QuestionBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\UserTestDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\LoginCommand.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\UserAnswer.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\user\UserTests.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\DBProperties.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\ExceptionCommand.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\CommandUtility.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\DaoFactory.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\UserTestDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\Answer.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\AnswerDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\Test.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\PropertyFileNames.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\AnswerBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\EncodingTypes.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\User.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\LogoutCommand.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\TestingDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCDaoFactory.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\filter\AuthFilter.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\ResponseMessages.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\UserTestBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\CommandNames.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\AttributeNames.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\AnswerDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCAnswerDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\admin\AllUsers.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\util\ResourceBundleUtil.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\MailConstants.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\builder\UserAnswerBuilder.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\entity\UserTest.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\service\TestDaoService.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\user\GoTest.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\UserAnswerDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\admin\SearchTest.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\controller\command\admin\AllTests.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\model\dao\imp\JDBCQuestionDao.java
-D:\EPAM\Git\TestApp\src\main\java\ua\training\constants\ColumnNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\AttributeNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\QuestionBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\Servlet.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\util\DataValidator.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\LoginCommand.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\ColumnNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\Command.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\user\UserTests.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\CommandUtility.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\Answer.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\TestDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserTestDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCDaoFactory.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\UserAnswerDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\admin\AllTests.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\UserTestDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\UserAnswer.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\PropertyFileNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\QuestionDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\MailSender.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\CommandNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\ResponseMessages.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\filter\AuthFilter.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\GoHome.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\user\SendToMail.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\DBProperties.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\LogoutCommand.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\user\TestsToGo.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\ExceptionCommand.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserAnswerDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\AnswerDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\filter\EncodingFilter.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\UserAnswerBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCAnswerDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\Test.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\UserAnswerDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\UserDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCTestDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\AnswerDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\PageNames.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\TestDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCQuestionDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\AnswerBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\listener\SessionListener.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\GenericDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\Registration.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\user\SearchTest.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\util\ResourceBundleUtil.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\user\GoTest.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\UserBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\UserTestBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\Queries.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\builder\TestBuilder.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\EncodingTypes.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\User.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\constants\MailConstants.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\Question.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\imp\JDBCUserDao.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\UserTestDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\controller\command\admin\AllUsers.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\dao\DaoFactory.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\UserDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\service\QuestionDaoService.java
+E:\FINAL PROJECT\TestApp\src\main\java\ua\training\model\entity\UserTest.java

@@ -49,7 +49,7 @@
 <div class="headtext"><h2><fmt:message key="index.text.page"/></h2></div>
 <br>
 
-<div class="imgstype"><img style="height: 400px;" src="${pageContext.request.contextPath}/util/test.jpg" class="rounded mx-auto d-block" alt="Test"></div>
+<div class="imgstype"><img style="height: 400px;" src="${pageContext.request.contextPath}/img/test.jpg" class="rounded mx-auto d-block" alt="Test"></div>
 
 </div><br>
 

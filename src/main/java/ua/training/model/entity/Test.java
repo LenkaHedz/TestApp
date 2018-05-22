@@ -1,14 +1,10 @@
 package ua.training.model.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Test {
     private long id;
     private Category category;
     private String name;
     private String description;
-    private List<Question> questions = new ArrayList<>();
 
     public Test() {
     }
@@ -18,14 +14,6 @@ public class Test {
         this.category = category;
         this.name = name;
         this.description = description;
-    }
-
-    public Test(long id, Category category, String name, String description, List<Question> questions) {
-        this.id = id;
-        this.category = category;
-        this.name = name;
-        this.description = description;
-        this.questions = questions;
     }
 
     public long getId() {
@@ -60,18 +48,6 @@ public class Test {
         this.description = description;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-
-    public boolean addQuestion(Question question){
-        return(this.questions.add(question));
-    }
-
     @Override
     public String toString() {
         return "Test{" +
@@ -83,6 +59,16 @@ public class Test {
     }
 
     public enum Category {
-        BIOLOGY, PROGRAMMING, MATHEMATICS;
+        BIOLOGY("Biology"),
+        PROGRAMMING("Programming"),
+        MATHEMATICS("Mathematics");
+
+        private String description;
+
+        private Category(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {return description;}
     }
 }

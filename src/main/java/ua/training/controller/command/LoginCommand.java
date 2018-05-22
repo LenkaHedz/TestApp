@@ -1,7 +1,7 @@
 package ua.training.controller.command;
 
+import org.apache.log4j.Logger;
 import ua.training.constants.AttributeNames;
-import ua.training.constants.CommandNames;
 import ua.training.constants.PageNames;
 import ua.training.constants.ResponseMessages;
 import ua.training.model.entity.User;
@@ -14,6 +14,7 @@ import java.util.Locale;
 
 public class LoginCommand implements Command {
 
+    final static Logger logger = Logger.getLogger(LoginCommand.class);
     private UserDaoService userService;
 
     @Override
@@ -33,10 +34,6 @@ public class LoginCommand implements Command {
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_ID, user.getId());
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_LOGIN, user.getLogin().toLowerCase());
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_ROLE, user.getRole());
-
-        System.out.println(user.getRole());
-        System.out.println(getPageByRole(user.getRole()));
-
         return getPageByRole(user.getRole());
     }
 
@@ -45,6 +42,7 @@ public class LoginCommand implements Command {
     }
 
     private void setErrorMessage(HttpServletRequest request, String message) {
+        logger.error(message);
         Locale locale = (Locale)request.getSession().getAttribute(AttributeNames.LANGUAGE);
         request.setAttribute(AttributeNames.WRONG_INPUT_MESSAGE, ResourceBundleUtil.
                 getPropertyFromLangBundle(message, locale));

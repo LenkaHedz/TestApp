@@ -5,11 +5,12 @@ public interface CommandNames {
     String REGISTRATION  = "registration";
     String LOGOUT        = "logout";
     String EXCEPTION     = "exception";
+    String GO_HOME       = "gohome";
 
-    String USER_MENU     = "/user/menu";
     String USER_TESTS    = "usertests";
     String TESTS_TO_GO   = "teststogo";
     String GO_TEST       = "gotest";
+    String SEND_TO_MAIL  = "sendtomail";
 
     String ALL_USERS     = "allusers";
     String ALL_TESTS     = "alltests";

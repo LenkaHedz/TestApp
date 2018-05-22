@@ -14,5 +14,9 @@ public interface MailConstants {
         String port_value   = "465";
 
         String address_from = "lenkahedz@gmail.com";
-        String personal = "Admin";
+        String password     = "2951181r";
+        String personal     = "Admin";
+
+        String theme_name   = "Results by test: ";
+        String theme_text   = "Your total ball is: ";
 }

@@ -58,7 +58,6 @@ public class JDBCUserTestDao implements UserTestDao {
             throw new RuntimeException(e);
         }
         return null;
-
     }
 
     @Override

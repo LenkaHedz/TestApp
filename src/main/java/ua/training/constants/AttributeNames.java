@@ -18,15 +18,18 @@ public interface AttributeNames {
     String LOGGED_USERS_COUNT = "countOfUsers";
 
     String LANGUAGE           = "language";
-    String REFERER            = "Referer";
 
     String WRONG_INPUT_MESSAGE = "wrongUserInputMessage";
 
-    String ALL_TESTS_COUNT     = "allTestsCount";
-    String TEST_LIST           = "testList";
+    String ALL_TESTS_COUNT = "allTestsCount";
+    String TEST_LIST       = "testList";
 
-    String USER_LIST           = "userList";
+    String USER_LIST       = "userList";
 
-    String ID_TEST = "idtest";
+    String ID_TEST         = "idtest";
+    String TEST_NAME       = "testName";
+    String USER_TEST_ID    = "usertestid";
+    String ANSWER_ID       = "answerid";
+    String ALL_BALL_COUNT  = "allBallCount";
 
 }

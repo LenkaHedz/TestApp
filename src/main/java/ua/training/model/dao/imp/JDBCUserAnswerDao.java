@@ -32,8 +32,18 @@ public class JDBCUserAnswerDao implements UserAnswerDao {
     }
 
     @Override
-    public UserAnswer findById(long id) {
+    public void createById(long userTestId, long answerId) {
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_ANSWER_CREATE)){
+            ps.setLong(1 , userTestId);
+            ps.setLong(2 , answerId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    @Override
+    public UserAnswer findById(long id) {
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_ANSWER_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -44,6 +54,21 @@ public class JDBCUserAnswerDao implements UserAnswerDao {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    @Override
+    public List<UserAnswer> findByUserTestId(long userTestId) {
+        List<UserAnswer> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_ANSWER_FIND_BY_USER_TEST_ID)){
+            ps.setLong(1, userTestId);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
     }
 
     @Override

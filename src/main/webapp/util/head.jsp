@@ -4,9 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty param.language ? param.language : not empty
-    language ? language : pageContext.request.locale}" scope="session" />
-
+<c:set var="language" scope="session" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"  />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="locale" />
 

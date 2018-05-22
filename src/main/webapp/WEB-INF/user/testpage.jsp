@@ -9,33 +9,26 @@
       <div class="row">
          <div class="col-lg-6">
 
-
-         <i><fmt:message key="pasttest.count"/> "${requestScope.test.name}"</i>
+         <div class="headtext"><h1><c:out value="${requestScope.testName}"/></h1></div>
          <br>
-         <i><fmt:message key="pasttest.count"/> "${requestScope.num}" "${requestScope.question.name}"</i>
+         <div class="headtext"><h3><c:out value="${requestScope.num}"/>. <c:out value="${requestScope.question.name}"/></h3></div>
+         <br>
          <br>
 
-                       <table id="example" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                 <tr>
-                                     <th><fmt:message key="pasttest.name"/></th>
-                                     <th><fmt:message key="pasttest.action"/></th>
-                                 </tr>
-                            </thead>
-                            <tbody>
-                                 <c:forEach items="${requestScope.answerList}" var="answerList">
-                                 <tr>
-                                     <td>${answerList.name}</td>
-                                     <td>
-                                        <form method="post" action="${pageContext.request.contextPath}/gotest">
-                                           <button class="btn btn-info" type="submit" name="answerid"  value="${answerList.id}"> <fmt:message key="pasttest.pastTest"/></button>
-                                        </form>
-                                     </td>
-                                 </tr>
-                                 </c:forEach>
-                            </tbody>
-                       </table>
-                       </ul>
+            <form method="post" action="${pageContext.request.contextPath}/gotest">
+               <c:forEach items="${requestScope.answerList}" var="answerList">
+                  <div class="form-check">
+                     <input type="checkbox" class="form-check-input" name="answerid" value="${answerList.id}">
+                     <label class="form-check-label" for="checkbox100">${answerList.name}</label>
+                  </div>
+               </c:forEach>
+               <br>
+               <input type='hidden' name='num' value='${requestScope.num}'/>
+               <input type='hidden' name='testName' value='${requestScope.testName}'/>
+               <input type='hidden' name='idtest' value='${requestScope.idtest}'/>
+               <input type='hidden' name='usertestid' value='${requestScope.usertestid}'/>
+               <button class="btn btn-info" type="submit"> <fmt:message key="registration.button.confirm"/></button>
+             </form>
 
          </div>
       </div>

@@ -21,7 +21,7 @@ public class JDBCTestDao implements TestDao {
     @Override
     public void create(Test test) {
         try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_CREATE)){
-            ps.setString(1 , firstUpperCase(test.getCategory().toString()));
+            ps.setString(1 , test.getCategory().getDescription());
             ps.setString(2 , test.getName());
             ps.setString(3 , test.getDescription());
             ps.executeUpdate();
@@ -49,7 +49,6 @@ public class JDBCTestDao implements TestDao {
         String category    = rs.getString(ColumnNames.TEST_CATEGORY).toUpperCase();
         String name        = rs.getString(ColumnNames.TEST_NAME);
         String description = rs.getString(ColumnNames.TEST_DESCRIPTION);
-        System.out.println(category);
         return new TestBuilder().setId(id).setCategory(Test.Category.valueOf(category))
                 .setName(name).setDescription(description).buildTest();
     }
@@ -86,7 +85,7 @@ public class JDBCTestDao implements TestDao {
     @Override
     public void update(Test test) {
         try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_UPDATE)){
-            ps.setString(1 , firstUpperCase(test.getCategory().toString()));
+            ps.setString(1 , test.getCategory().getDescription());
             ps.setString(2 , test.getName());
             ps.setString(3 , test.getDescription());
             ps.setLong(4 , test.getId());
@@ -113,12 +112,5 @@ public class JDBCTestDao implements TestDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private String firstUpperCase(String word){
-        if(word == null || word.isEmpty()){
-            return "";
-        }
-        return word.substring(0, 1).toUpperCase().concat(word.substring(1).toLowerCase());
     }
 }

@@ -9,8 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 
 public class CommandUtility {
-    static void setUserRole(HttpServletRequest request,
-                            User.Role role, String login) {
+    static void setUserRole(HttpServletRequest request, User.Role role, String login) {
         HttpSession session = request.getSession();
         ServletContext context = session.getServletContext();
         context.setAttribute(AttributeNames.LOGIN, login);

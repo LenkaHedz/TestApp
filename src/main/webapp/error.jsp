@@ -1,24 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<%@ page language="java" isErrorPage="true"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, java.text.*" %>
+<%@ include file="/util/head.jsp" %>
 
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Error Page</title>
-</head>
 <body>
-<h2>
-    Error Page<br/>
-    <i>Error <%= exception %></i>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="${pageContext.request.contextPath}/gohome"><fmt:message key="navbar.home" /></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="imgstype"><img style="height: 300px;" src="${pageContext.request.contextPath}/img/error.jpg" class="rounded mx-auto d-block" alt="Error"></div>
+<br>
+
+<div class="headtext"><h2><i>Error: <%= exception %></i></div>
 </h2>
 <br>
-
-<div class="imgstype"><img style="height: 250px;" src="${pageContext.request.contextPath}/util/error.jpg" class="rounded mx-auto d-block" alt="Error"></div>
-<br>
-
-<a href="${pageContext.request.contextPath}/index.jsp">Index</a>
 
 
 </body>

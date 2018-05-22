@@ -9,12 +9,12 @@
     <br>
 
     <div class = "imgstype"><ul class="nav nav-pills nav-stacked">
-        <li><a href="${pageContext.request.contextPath}/usertests"><fmt:message key="sidebar.userTests" /></a></li>
-        <li><a href="${pageContext.request.contextPath}/teststogo"><fmt:message key="sidebar.testsToGo" /></a></li>
+        <li><a href="${pageContext.request.contextPath}/usertests"><span class="glyphicon glyphicon-ok-sign"></span><fmt:message key="sidebar.userTests" /></a></li>
+        <li><a href="${pageContext.request.contextPath}/teststogo"><span class="glyphicon glyphicon-file"></span><fmt:message key="sidebar.testsToGo" /></a></li>
     </ul></div>
     <br>
 
-    <div class="imgstype"><img style="height: 400px;" src="${pageContext.request.contextPath}/util/user.jpg" class="rounded mx-auto d-block" alt="User"></div>
+    <div class="imgstype"><img style="height: 400px;" src="${pageContext.request.contextPath}/img/user.jpg" class="rounded mx-auto d-block" alt="User"></div>
 
 <%@ include file="/util/footer.jsp" %>
 </body>

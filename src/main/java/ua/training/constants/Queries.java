@@ -45,6 +45,7 @@ public interface Queries {
 
     String USER_ANSWER_CREATE        = bundle.getString("query.user_answer.create");
     String USER_ANSWER_FIND_BY_ID    = bundle.getString("query.user_answer.findById");
+    String USER_ANSWER_FIND_BY_USER_TEST_ID = bundle.getString("query.user_answer.findByUserTestId");
     String USER_ANSWER_FIND_ALL      = bundle.getString("query.user_answer.findAll");
     String USER_ANSWER_UPDATE        = bundle.getString("query.user_answer.update");
     String USER_ANSWER_DELETE        = bundle.getString("query.user_answer.delete");

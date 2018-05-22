@@ -1,11 +1,12 @@
 package ua.training.constants;
 
 public interface PageNames {
-    String API            = ".*/test";
+    String API            = ".*/test/";
     String REPLACE        = "";
-    String INDEX          = "index.jsp";
+    String INDEX          = "/index.jsp";
     String REDIRECT       = "redirect";
     String REDIRECT_TO    = "redirect:";
+
     String REDIRECT_INDEX = "redirect:/test/index.jsp";
 
     String ERROR       = "/error.jsp";
@@ -23,4 +24,5 @@ public interface PageNames {
     String TEST_PAGE   = "/WEB-INF/user/testpage.jsp";
 
     String USER_TESTS  = "/WEB-INF/user/usertests.jsp";
+    String TEST_RESULT = "/WEB-INF/user/testresult.jsp";
 }

@@ -12,9 +12,9 @@ public class SessionListener implements HttpSessionListener {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        @SuppressWarnings("unchecked")
         HashSet<String> loggedUsers = (HashSet<String>) httpSessionEvent
                 .getSession().getServletContext()
                 .getAttribute(AttributeNames.LOGGED_USERS);
