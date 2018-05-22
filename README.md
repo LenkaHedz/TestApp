@@ -21,7 +21,7 @@ Technologies used:
 - Pagination
 - Transaction
 
-MySQL DB Dump: Dump20180521-2.sql
+MySQL DB Dump: Dump20180522.sql
 
 Run/Deug Configurations: Maven 
 Command line: tomcat7:run
