@@ -15,7 +15,7 @@ public class AllUsers implements Command {
     public String execute(HttpServletRequest request) {
         UserDaoService userService = new UserDaoService();
         List<User> userList = userService.findAll();
-        request.setAttribute(AttributeNames.LOGGED_USERS_COUNT, userList.size());
+        request.setAttribute(AttributeNames.ALL_USERS_COUNT, userList.size());
         request.setAttribute(AttributeNames.USER_LIST, userList);
         return PageNames.ALL_USERS;
     }

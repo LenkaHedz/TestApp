@@ -5,6 +5,7 @@ import ua.training.model.dao.TestDao;
 import ua.training.model.entity.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TestDaoService {
 
@@ -12,7 +13,7 @@ public class TestDaoService {
 
     public static void create(Test test) { dao.create(test); }
 
-    public static Test findById(long id) { return dao.findById(id); }
+    public static Optional<Test> findById(long id) { return dao.findById(id); }
 
     public static List<Test> findAll() { return dao.findAll(); }
 

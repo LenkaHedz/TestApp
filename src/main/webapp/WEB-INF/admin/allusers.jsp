@@ -1,46 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ include file="/util/head.jsp" %>
 
 <html>
-<head>
-    <title>All Users form</title>
-</head>
 <body>
-<h2>
-    This is Users form! <br/>
-</h2>
-    <i>Count of Users = "${requestScope.countOfUsers}"</i>
-    <br>
+<%@ include file="/util/navadmin.jsp" %>
 
-    <table border=1>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Password</th>
-            <th>Ball</th>
-        </tr>
-        </thead>
-        <tbody>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="container text-center conteinerd">
+            <div class="row">
+                 <div class="col-lg-6">
 
-        <c:forEach items="${requestScope.userList}" var="userList">
-            <tr>
-                <td>${userList.id}</td>
-                <td>${userList.name}</td>
-                <td>${userList.login}</td>
-                <td>${userList.password}</td>
-                <td>${userList.ball}</td>
+                 <i><fmt:message key="users.count"/> "${requestScope.allUsersCount}"</i>
+                 <br>
+                 <br>
 
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+                   <thead>
+                        <tr>
+                            <th><fmt:message key="pasttest.num"/></th>
+                            <th><fmt:message key="pasttest.name"/></th>
+                            <th><fmt:message key="pasttest.login"/></th>
+                            <th><fmt:message key="pasttest.password"/></th>
+                            <th><fmt:message key="pasttest.ball"/></th>
+                            <th><fmt:message key="pasttest.action"/></th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                        <c:forEach items="${requestScope.userList}" var="userList">
+                        <tr>
+                            <td>${userList.id}</td>
+                            <td>${userList.name}</td>
+                            <td>${userList.login}</td>
+                            <td>${userList.password}</td>
+                            <td>${userList.ball}</td>
+                            <td>
+                               <form method="post" action="${pageContext.request.contextPath}/usertestsadmin">
+                                  <button class="btn btn-info" type="submit" name="userid" value="${userList.id}"> <fmt:message key="pasttest.userTests"/></button>
+                               </form>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                   </tbody>
+                 </table>
+                 </ul>
 
-    <br>
-    <a href="${pageContext.request.contextPath}/alltests">Show Tests</a>
-    <br/>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+    <%@ include file="/util/footer.jsp" %>
 </body>
 </html>

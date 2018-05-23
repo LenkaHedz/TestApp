@@ -9,6 +9,7 @@ import ua.training.model.entity.builder.UserBuilder;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JDBCUserDao implements UserDao {
 
@@ -45,17 +46,34 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public User findById(long id) {
+    public Optional<User> findById(long id) {
+        Optional<User> user = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                user = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return user;
+    }
+
+    @Override
+    public Optional<User> login(String login, String password) {
+        Optional<User> user = Optional.empty();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_LOGIN)){
+            ps.setString(1, login.toLowerCase());
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if( rs.next() ){
+                user = Optional.of(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 
     private User extractFromResultSet(ResultSet rs) throws SQLException {
@@ -113,22 +131,6 @@ public class JDBCUserDao implements UserDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public User login(String login, String password) {
-        User user = null;
-        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_LOGIN)){
-            ps.setString(1, login.toLowerCase());
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if( rs.next() ){
-                user = extractFromResultSet(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return user;
     }
 
     @Override

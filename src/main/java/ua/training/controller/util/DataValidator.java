@@ -14,4 +14,5 @@ public class DataValidator {
     public static boolean passwordsAreEquals(String password, String confirmPassword) {
         return password.equals(confirmPassword);
     }
+
 }

@@ -2,21 +2,23 @@ package ua.training.constants;
 
 public interface MailConstants {
 
-        String host_name    = "mail.smtp.host";
-        String host_value   = "smtp.gmail.com";
-        String port_sfname  = "mail.smtp.socketFactory.port";
-        String port_sfvalue = "465";
-        String soket_name   = "mail.smtp.socketFactory.class";
-        String soket_value  = "javax.net.ssl.SSLSocketFactory";
-        String auth_name    = "mail.smtp.auth";
-        String auth_value   = "true";
-        String port_name    = "mail.smtp.port";
-        String port_value   = "465";
+        String HOST_NAME    = "mail.smtp.host";
+        String HOST_VALUE   = "smtp.gmail.com";
+        String PORT_SFNAME  = "mail.smtp.socketFactory.port";
+        String PORT_SFVALUE = "465";
+        String SOKET_NAME   = "mail.smtp.socketFactory.class";
+        String SOKET_VALUE  = "javax.net.ssl.SSLSocketFactory";
+        String AUTH_NAME    = "mail.smtp.auth";
+        String AUTH_VALUE   = "true";
+        String PORT_NAME    = "mail.smtp.port";
+        String PORT_VALUE   = "465";
 
         String address_from = "lenkahedz@gmail.com";
-        String password     = "2951181r";
-        String personal     = "Admin";
+        String PASSWORD     = "********";
+        String PERSONAL     = "Admin";
 
-        String theme_name   = "Results by test: ";
-        String theme_text   = "Your total ball is: ";
+        String THEME_NAME   = "Results by test: ";
+        String THEME_TEXT   = "Your total ball is: ";
+
+        String ERROR_DATA   = "Not found data for mail";
 }

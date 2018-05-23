@@ -5,6 +5,7 @@ import ua.training.model.dao.DaoFactory;
 import ua.training.model.entity.UserTest;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserTestDaoService {
 
@@ -12,9 +13,9 @@ public class UserTestDaoService {
 
     public static void create(UserTest userTest) { dao.create(userTest); }
 
-    public static UserTest createById(long userId, long testId) { return dao.createById(userId, testId); }
+    public static Optional<UserTest> createById(long userId, long testId) { return dao.createById(userId, testId); }
 
-    public static UserTest findById(long id) { return dao.findById(id); }
+    public static Optional<UserTest> findById(long id) { return dao.findById(id); }
 
     public static List<UserTest> findAll() { return dao.findAll(); }
 

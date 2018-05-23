@@ -24,12 +24,19 @@ public interface AttributeNames {
     String ALL_TESTS_COUNT = "allTestsCount";
     String TEST_LIST       = "testList";
 
+    String ALL_USERS_COUNT = "allUsersCount";
     String USER_LIST       = "userList";
 
     String ID_TEST         = "idtest";
+    String USER_ID         = "userid";
     String TEST_NAME       = "testName";
     String USER_TEST_ID    = "usertestid";
     String ANSWER_ID       = "answerid";
     String ALL_BALL_COUNT  = "allBallCount";
+
+    String USER_ANSWER_LIST = "userAnswerList";
+    String QUESTION_LIST = "questionList";
+    String QUESTION      = "question";
+    String ANSWER_LIST   = "answerList";
 
 }

@@ -1,4 +1,4 @@
-package ua.training.controller.command.admin;
+package ua.training.controller.command.user;
 
 import ua.training.constants.AttributeNames;
 import ua.training.constants.PageNames;

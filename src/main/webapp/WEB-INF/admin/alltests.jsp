@@ -1,60 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ include file="/util/head.jsp" %>
 
 <html>
-<head>
-    <title>All Tests form</title>
-</head>
 <body>
-<h2>
-    This is Tests form! <br/>
-</h2>
+<%@ include file="/util/navadmin.jsp" %>
 
-     <br>
-         Find by name
-         <form method="GET" action="${pageContext.request.contextPath}/searchtest">
-             <input type="text" name="name" size="125">
-             <input type="submit" value="Show" >
-         </form>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="container text-center conteinerd">
+            <div class="row">
+                 <div class="col-lg-6">
 
-    <br>
+                 <i><fmt:message key="pasttest.count"/> "${requestScope.allTestsCount}"</i>
+                 <br>
+                 <br>
 
-    <i>Count of Tariffs = "${requestScope.allTestsCount}"</i>
-    <br>
-    <br>
+                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+                   <thead>
+                        <tr>
+                            <th><fmt:message key="pasttest.num"/></th>
+                            <th><fmt:message key="pasttest.category"/></th>
+                            <th><fmt:message key="pasttest.name"/></th>
+                            <th><fmt:message key="pasttest.description"/></th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                        <c:forEach items="${requestScope.testList}" var="testList">
+                        <tr>
+                            <td>${testList.id}</td>
+                            <td>${testList.category.getDescription()}</td>
+                            <td>${testList.name}</td>
+                            <td>${testList.description}</td>
+                        </tr>
+                        </c:forEach>
+                   </tbody>
+                 </table>
+                 </ul>
 
-    <table border=1>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Category</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <c:forEach items="${requestScope.testList}" var="testList">
-            <tr>
-                <td>${testList.id}</td>
-                <td>${testList.category}</td>
-                <td>${testList.name}</td>
-                <td>${testList.description}</td>
-                <td>
-                  <form method="post" action="${pageContext.request.contextPath}/gotest">
-                    <button class="btn btn-info" type="submit">Go test</button>
-                   </form>
-                </td>
-
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-
-    <br>
-    <a href="${pageContext.request.contextPath}/allusers">Show Users</a>
-    <br/>
-
+    <%@ include file="/util/footer.jsp" %>
 </body>
 </html>

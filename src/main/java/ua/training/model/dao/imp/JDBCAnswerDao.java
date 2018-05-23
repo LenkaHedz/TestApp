@@ -10,6 +10,7 @@ import ua.training.model.service.QuestionDaoService;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JDBCAnswerDao implements AnswerDao {
 
@@ -32,17 +33,18 @@ public class JDBCAnswerDao implements AnswerDao {
     }
 
     @Override
-    public Answer findById(long id) {
+    public Optional<Answer> findById(long id) {
+        Optional<Answer> answer = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.ANSWER_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                answer = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return answer;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class JDBCAnswerDao implements AnswerDao {
         long idQuestion = rs.getLong(ColumnNames.ANSWER_ID_QUESTION);
         String name     = rs.getString(ColumnNames.ANSWER_NAME);
         int ball        = rs.getInt(ColumnNames.ANSWER_BALL);
-        return new AnswerBuilder().setId(id).setQuestion(QuestionDaoService.findById(idQuestion))
+        return new AnswerBuilder().setId(id).setQuestion(QuestionDaoService.findById(idQuestion).get())
                 .setName(name).setBall(ball).buildAnswer();
     }
 

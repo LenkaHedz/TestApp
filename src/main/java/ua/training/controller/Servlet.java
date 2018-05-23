@@ -6,6 +6,8 @@ import ua.training.constants.AttributeNames;
 import ua.training.constants.CommandNames;
 import ua.training.controller.command.admin.AllTests;
 import ua.training.controller.command.admin.AllUsers;
+import ua.training.controller.command.admin.TestResults;
+import ua.training.controller.command.admin.UserTestsAdmin;
 import ua.training.controller.command.user.SearchTest;
 import ua.training.controller.command.user.GoTest;
 import ua.training.controller.command.user.SendToMail;
@@ -39,6 +41,8 @@ public class Servlet extends HttpServlet {
 
         commands.put(CommandNames.ALL_USERS, new AllUsers());
         commands.put(CommandNames.ALL_TESTS, new AllTests());
+        commands.put(CommandNames.USER_TESTS_ADMIN, new UserTestsAdmin());
+        commands.put(CommandNames.TESTS_RESULTS, new TestResults());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

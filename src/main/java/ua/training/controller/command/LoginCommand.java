@@ -11,6 +11,7 @@ import ua.training.controller.util.ResourceBundleUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
+import java.util.Optional;
 
 public class LoginCommand implements Command {
 
@@ -25,16 +26,24 @@ public class LoginCommand implements Command {
             setErrorMessage(request, ResponseMessages.REGISTRATION_NOT_ALL_FIELDS);
             return PageNames.LOGIN;
         }
-        User user = userService.login(login, password);
+
+        Optional<User> user = userService.login(login, password);
+        if (!user.isPresent()) {
+            ResourceBundleUtil.setErrorMessage(request, ResponseMessages.LOGIN_ERROR);
+            return PageNames.LOGIN;
+        }
+
+        User loggedUser = user.get();
+
         if(CommandUtility.checkUserIsLogged(request, login)){
             setErrorMessage(request, ResponseMessages.LOGIN_USER_IS_LOGGED);
             return PageNames.LOGIN;
         }
-        request.getSession().setAttribute(AttributeNames.USER, user);
-        request.getSession().setAttribute(AttributeNames.LOGGED_USER_ID, user.getId());
-        request.getSession().setAttribute(AttributeNames.LOGGED_USER_LOGIN, user.getLogin().toLowerCase());
-        request.getSession().setAttribute(AttributeNames.LOGGED_USER_ROLE, user.getRole());
-        return getPageByRole(user.getRole());
+        request.getSession().setAttribute(AttributeNames.USER, loggedUser);
+        request.getSession().setAttribute(AttributeNames.LOGGED_USER_ID, loggedUser.getId());
+        request.getSession().setAttribute(AttributeNames.LOGGED_USER_LOGIN, loggedUser.getLogin().toLowerCase());
+        request.getSession().setAttribute(AttributeNames.LOGGED_USER_ROLE, loggedUser.getRole());
+        return getPageByRole(loggedUser.getRole());
     }
 
     private String getPageByRole(User.Role userRole) {

@@ -5,6 +5,7 @@ import ua.training.model.dao.UserDao;
 import ua.training.model.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserDaoService {
 
@@ -14,7 +15,7 @@ public class UserDaoService {
 
     public static void create(String login, String password, User.Role role, String name) { dao.create(login, password, role, name); }
 
-    public static User findById(long id) { return dao.findById(id); }
+    public static Optional<User> findById(long id) { return dao.findById(id); }
 
     public static List<User> findAll() { return dao.findAll(); }
 
@@ -22,7 +23,7 @@ public class UserDaoService {
 
     public static void delete(long id) { dao.delete(id); }
 
-    public static User login(String login, String password) { return dao.login(login, password); }
+    public static Optional<User> login(String login, String password) { return dao.login(login, password); }
 
     public static boolean userExists(String login) { return dao.userExists(login); }
 

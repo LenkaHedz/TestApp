@@ -9,6 +9,7 @@ import ua.training.model.entity.builder.TestBuilder;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JDBCTestDao implements TestDao {
 
@@ -31,17 +32,18 @@ public class JDBCTestDao implements TestDao {
     }
 
     @Override
-    public Test findById(long id) {
+    public Optional<Test> findById(long id) {
+        Optional<Test> test = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                test = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return test;
     }
 
     private Test extractFromResultSet(ResultSet rs) throws SQLException {

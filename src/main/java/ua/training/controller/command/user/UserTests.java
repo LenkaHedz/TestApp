@@ -3,6 +3,7 @@ package ua.training.controller.command.user;
 import ua.training.constants.AttributeNames;
 import ua.training.constants.PageNames;
 import ua.training.controller.command.Command;
+import ua.training.model.entity.User;
 import ua.training.model.entity.UserTest;
 import ua.training.model.service.UserTestDaoService;
 
@@ -19,4 +20,5 @@ public class UserTests implements Command {
         request.setAttribute(AttributeNames.TEST_LIST, userTestList);
         return PageNames.USER_TESTS;
     }
+
 }

@@ -3,7 +3,9 @@ package ua.training.model.dao.imp;
 import ua.training.model.dao.UserAnswerDao;
 import ua.training.constants.ColumnNames;
 import ua.training.constants.Queries;
+import ua.training.model.entity.Answer;
 import ua.training.model.entity.UserAnswer;
+import ua.training.model.entity.UserTest;
 import ua.training.model.entity.builder.UserAnswerBuilder;
 import ua.training.model.service.AnswerDaoService;
 import ua.training.model.service.UserTestDaoService;
@@ -11,6 +13,7 @@ import ua.training.model.service.UserTestDaoService;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JDBCUserAnswerDao implements UserAnswerDao {
 
@@ -43,17 +46,18 @@ public class JDBCUserAnswerDao implements UserAnswerDao {
     }
 
     @Override
-    public UserAnswer findById(long id) {
+    public Optional<UserAnswer> findById(long id) {
+        Optional<UserAnswer> userAnswer = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_ANSWER_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                userAnswer = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return userAnswer;
     }
 
     @Override
@@ -90,8 +94,8 @@ public class JDBCUserAnswerDao implements UserAnswerDao {
         long idUserTest = rs.getLong(ColumnNames.USER_ANSWER_ID_USER_TEST);
         long idAnswer   = rs.getLong(ColumnNames.USER_ANSWER_ID_ANSWER);
 
-        return new UserAnswerBuilder().setId(id).setUserTest(UserTestDaoService.findById(idUserTest))
-                .setAnswer(AnswerDaoService.findById(idAnswer)).buildUserAnswer();
+        return new UserAnswerBuilder().setId(id).setUserTest(UserTestDaoService.findById(idUserTest).get())
+                .setAnswer(AnswerDaoService.findById(idAnswer).get()).buildUserAnswer();
     }
 
     @Override

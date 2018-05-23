@@ -5,6 +5,8 @@
 <body>
 <%@ include file="/util/navuser.jsp" %>
 
+</script>
+
    <div class="container text-left">
       <div class="row">
          <div class="col-lg-6">
@@ -18,7 +20,7 @@
             <form method="post" action="${pageContext.request.contextPath}/gotest">
                <c:forEach items="${requestScope.answerList}" var="answerList">
                   <div class="form-check">
-                     <input type="checkbox" class="form-check-input" name="answerid" value="${answerList.id}">
+                     <input type="checkbox" class="form-check-input" id="checkbox100" name="answerid" value="${answerList.id}">
                      <label class="form-check-label" for="checkbox100">${answerList.name}</label>
                   </div>
                </c:forEach>

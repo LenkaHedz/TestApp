@@ -11,8 +11,10 @@ public interface CommandNames {
     String TESTS_TO_GO   = "teststogo";
     String GO_TEST       = "gotest";
     String SEND_TO_MAIL  = "sendtomail";
+    String SEARCH_TEST   = "searchtest";
 
     String ALL_USERS     = "allusers";
     String ALL_TESTS     = "alltests";
-    String SEARCH_TEST   = "searchtest";
+    String TESTS_RESULTS = "testresults";
+    String USER_TESTS_ADMIN = "usertestsadmin";
 }

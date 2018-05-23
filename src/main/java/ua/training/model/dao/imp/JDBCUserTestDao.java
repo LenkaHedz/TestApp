@@ -3,6 +3,8 @@ package ua.training.model.dao.imp;
 import ua.training.model.dao.UserTestDao;
 import ua.training.constants.ColumnNames;
 import ua.training.constants.Queries;
+import ua.training.model.entity.Test;
+import ua.training.model.entity.User;
 import ua.training.model.entity.UserTest;
 import ua.training.model.entity.builder.UserTestBuilder;
 import ua.training.model.service.TestDaoService;
@@ -12,6 +14,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JDBCUserTestDao implements UserTestDao {
 
@@ -35,7 +38,7 @@ public class JDBCUserTestDao implements UserTestDao {
     }
 
     @Override
-    public UserTest createById(long userId, long testId) {
+    public Optional<UserTest> createById(long userId, long testId) {
         LocalDate datePass = LocalDate.now();
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_CREATE)){
             ps.setLong(1 , userId);
@@ -46,32 +49,34 @@ public class JDBCUserTestDao implements UserTestDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        Optional<UserTest> userTest = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_FIND_BY_VALUE)){
             ps.setLong(1, userId);
             ps.setLong(2, testId);
             ps.setDate(3, Date.valueOf(datePass));
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                userTest = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return userTest;
     }
 
     @Override
-    public UserTest findById(long id) {
+    public Optional<UserTest> findById(long id) {
+        Optional<UserTest> userTest = Optional.empty();
         try (PreparedStatement ps = connection.prepareStatement(Queries.USER_TEST_FIND_BY_ID)){
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ){
-                return extractFromResultSet(rs);
+                userTest = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return userTest;
     }
 
     @Override
@@ -95,8 +100,8 @@ public class JDBCUserTestDao implements UserTestDao {
         LocalDate datePass = rs.getDate(ColumnNames.USER_TEST_DATE_PASS).toLocalDate();
         int ball           = rs.getInt(ColumnNames.USER_TEST_BALL);
 
-        return new UserTestBuilder().setId(id).setUser(UserDaoService.findById(idUser))
-                .setTest(TestDaoService.findById(idTest)).setDatePass(datePass).setBall(ball).buildUserTest();
+        return new UserTestBuilder().setId(id).setUser(UserDaoService.findById(idUser).get())
+                .setTest(TestDaoService.findById(idTest).get()).setDatePass(datePass).setBall(ball).buildUserTest();
     }
 
     @Override

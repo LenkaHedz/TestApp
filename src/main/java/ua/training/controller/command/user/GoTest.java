@@ -30,16 +30,16 @@ public class GoTest implements Command {
         }
         int num = Integer.parseInt(request.getParameter(AttributeNames.NUM));
         long testid = Long.parseLong(request.getParameter(AttributeNames.ID_TEST));
-        Test test = testService.findById(testid);
+        Test test = testService.findById(testid).get();
         UserTest userTest;
         long usertestid;
         if(num == 0){
             long userid = Long.parseLong(request.getSession().getAttribute(AttributeNames.LOGGED_USER_ID).toString());
-            userTest = userTestService.createById(userid, testid);
+            userTest = userTestService.createById(userid, testid).get();
             usertestid = userTest.getId();
         } else {
             usertestid = Long.parseLong(request.getParameter(AttributeNames.USER_TEST_ID));
-            userTest = userTestService.findById(usertestid);
+            userTest = userTestService.findById(usertestid).get();
             String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
             for (String answerid: answeridList) {
                 userAnswerService.createById(usertestid, Long.parseLong(answerid));
@@ -47,15 +47,13 @@ public class GoTest implements Command {
         }
         List<Question> questionList = questionService.findByIdTest(testid);
         if(num == questionList.size()){
-            /*
-            SEND ON MAIL
-            MailSender.send(MailConstants.theme_name + userTest.getTest().getName(), MailConstants.theme_text + userTest.getBall(), userTest.getUser().getLogin());
-            logger.error(MailConstants.theme_name + userTest.getTest().getName());*/
+            MailSender.send(MailConstants.THEME_NAME + userTest.getTest().getName(), MailConstants.THEME_TEXT + userTest.getBall(), userTest.getUser().getLogin());
+            logger.error(MailConstants.THEME_NAME + userTest.getTest().getName());
             List<UserAnswer> userAnswerList = userAnswerService.findByUserTestId(usertestid);
             request.setAttribute(AttributeNames.TEST_NAME, test.getName());
             request.setAttribute(AttributeNames.ALL_BALL_COUNT, userTest.getBall());
-            request.setAttribute("userAnswerList", userAnswerList);
-            return PageNames.TEST_RESULT;
+            request.setAttribute(AttributeNames.USER_ANSWER_LIST, userAnswerList);
+            return PageNames.USER_TEST_RESULT;
         }
         Question question = questionList.get(num);
         List<Answer> answerList = answerService.findByIdQuestion(question.getId());
@@ -63,9 +61,9 @@ public class GoTest implements Command {
         request.setAttribute(AttributeNames.ID_TEST, test.getId());
         request.setAttribute(AttributeNames.TEST_NAME, test.getName());
         request.setAttribute(AttributeNames.USER_TEST_ID, usertestid);
-        request.setAttribute("questionList", questionList);
-        request.setAttribute("question", question);
-        request.setAttribute("answerList", answerList);
+        request.setAttribute(AttributeNames.QUESTION_LIST, questionList);
+        request.setAttribute(AttributeNames.QUESTION, question);
+        request.setAttribute(AttributeNames.ANSWER_LIST, answerList);
         return PageNames.TEST_PAGE;
     }
 }
