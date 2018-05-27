@@ -19,15 +19,15 @@ public class AllUserTests implements Command {
     public String execute(HttpServletRequest request) {
         UserDaoService userDaoService = new UserDaoService();
         UserTestDaoService userTestService = new UserTestDaoService();
-        Optional<User> userOpt = userDaoService.findById(Long.parseLong(request.getParameter(AttributeNames.USER_ID)));
         User user;
-        if(userOpt.isPresent()){
+        if(request.getParameter(AttributeNames.USER_ID) != null){
             user = userDaoService.findById(Long.parseLong(request.getParameter(AttributeNames.USER_ID))).get();
             request.getSession().setAttribute(AttributeNames.ACTIVE_USER, user);
-        } else {
+        } else if (request.getSession().getAttribute(AttributeNames.ACTIVE_USER) != null) {
             user = (User) request.getSession().getAttribute(AttributeNames.ACTIVE_USER);
+        } else {
+            return PageNames.ALL_USERS;
         }
-        System.out.println(user.getId());
         int numPage = request.getParameter(AttributeNames.PAGE) == null ? 1 : Integer.parseInt(request.getParameter(AttributeNames.PAGE));
         int num = numPage * AttributeNames.NUM_ROWS - AttributeNames.NUM_ROWS;
         List<UserTest> userTestList = userTestService.findByUserNum(user.getId(), num);

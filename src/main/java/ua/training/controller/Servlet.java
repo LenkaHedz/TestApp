@@ -31,7 +31,6 @@ public class Servlet extends HttpServlet {
 
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext().setAttribute(AttributeNames.LOGGED_USERS, new HashSet<String>());
-        commands.put(CommandNames.LOCALE, new LanguageCommand());
         commands.put(CommandNames.REGISTRATION, new Registration());
         commands.put(CommandNames.LOGIN, new LoginCommand());
         commands.put(CommandNames.LOGOUT, new LogoutCommand());
@@ -72,9 +71,9 @@ public class Servlet extends HttpServlet {
         if(isAccessAllowed(command, role) ){
             page = command.execute(request);
         } else {
-            page = PageNames.REDIRECT_TO + DataValidator.getIndexByRole(role);
+            page = DataValidator.getIndexByRole(role);
         }
-        if(page.contains(PageNames.REDIRECT_TO)){
+        if(page.contains(PageNames.REDIRECT)){
             response.sendRedirect(page.replace(PageNames.REDIRECT_TO, PageNames.REPLACE));
         }else {
             request.getRequestDispatcher(page).forward(request, response);

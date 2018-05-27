@@ -161,6 +161,21 @@ public class JDBCUserDao implements UserDao {
         return 0;
     }
 
+    @Override
+    public List<User> findByNum(int num) {
+        List<User> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.USER_FIND_BY_NUM)){
+            ps.setInt(1, num);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
+    }
+
     private String firstUpperCase(String word){
         if(word == null || word.isEmpty()){
             return "";

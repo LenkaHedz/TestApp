@@ -1,23 +1,26 @@
-package ua.training.controller.util;
+package ua.training.view;
 
+import org.apache.log4j.Logger;
 import ua.training.constants.AttributeNames;
+import ua.training.controller.command.LoginCommand;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class DateFormatTag extends TagSupport {
-    private LocalDate date;
     private String language;
+    private LocalDate date;
 
-    public void setDate(LocalDate date) {
+    public void setLocalDate(LocalDate date) {
         this.date = date;
     }
 
-    public void setLocale(String locale) {
-        this.language = locale;
+    public void setLanguage(String langCount) {
+        this.language = langCount;
     }
 
     @Override

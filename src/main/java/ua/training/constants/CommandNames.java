@@ -1,7 +1,6 @@
 package ua.training.constants;
 
 public interface CommandNames {
-    String LOCALE        = "locale";
     String REGISTRATION  = "registration";
     String EXCEPTION     = "exception";
     String GO_HOME       = "gohome";

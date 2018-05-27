@@ -17,9 +17,14 @@ public class UserTests implements Command {
     public String execute(HttpServletRequest request) {
         UserTestDaoService userTestService = new UserTestDaoService();
         long userid = Long.parseLong(request.getSession().getAttribute(AttributeNames.LOGGED_USER_ID).toString());
-        List<UserTest> userTestList = userTestService.findByUser(userid);
-        request.setAttribute(AttributeNames.ALL_TESTS_COUNT, userTestList.size());
-        request.setAttribute(AttributeNames.TEST_LIST, userTestList);
+        int numPage = request.getParameter(AttributeNames.PAGE) == null ? 1 : Integer.parseInt(request.getParameter(AttributeNames.PAGE));
+        int num = numPage * AttributeNames.NUM_ROWS - AttributeNames.NUM_ROWS;
+        List<UserTest> userTestList = userTestService.findByUserNum(userid, num);
+        int allListSize = userTestService.findByUser(userid).size();
+        int numberOfPages = (int)Math.ceil((double) allListSize / AttributeNames.NUM_ROWS);
+        request.getSession().setAttribute(AttributeNames.ALL_TESTS_COUNT, allListSize);
+        request.getSession().setAttribute(AttributeNames.TEST_LIST, userTestList);
+        request.getSession().setAttribute(AttributeNames.NUMBER_OF_PAGES, numberOfPages);
         return PageNames.USER_TESTS;
     }
 

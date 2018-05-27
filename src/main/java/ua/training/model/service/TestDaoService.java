@@ -17,6 +17,8 @@ public class TestDaoService {
 
     public static List<Test> findAll() { return dao.findAll(); }
 
+    public static List<Test> findByNum(int num) { return dao.findByNum(num); }
+
     public static List<Test> findByName(String name) { return dao.findByName(name); }
 
     public static void update(Test test) { dao.update(test); }

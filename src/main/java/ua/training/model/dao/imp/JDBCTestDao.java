@@ -56,6 +56,21 @@ public class JDBCTestDao implements TestDao {
     }
 
     @Override
+    public List<Test> findByNum(int num) {
+        List<Test> resultList = new ArrayList<>();
+        try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_FIND_BY_NUM)){
+            ps.setInt(1, num);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                resultList.add(extractFromResultSet(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultList;
+    }
+
+    @Override
     public List<Test> findByName(String name) {
         List<Test> resultList = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_FIND_BY_NAME)){

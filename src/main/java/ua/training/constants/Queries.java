@@ -8,6 +8,7 @@ public interface Queries {
     String USER_CREATE         = bundle.getString("query.user.create");
     String USER_FIND_BY_ID     = bundle.getString("query.user.findById");
     String USER_FIND_ALL       = bundle.getString("query.user.findAll");
+    String USER_FIND_BY_NUM    = bundle.getString("query.user.findByNum");
     String USER_UPDATE         = bundle.getString("query.user.update");
     String USER_DELETE         = bundle.getString("query.user.delete");
     String USER_LOGIN          = bundle.getString("query.user.login");
@@ -16,6 +17,7 @@ public interface Queries {
 
     String TEST_CREATE         = bundle.getString("query.test.create");
     String TEST_FIND_BY_ID     = bundle.getString("query.test.findById");
+    String TEST_FIND_BY_NUM    = bundle.getString("query.test.findByNum");
     String TEST_FIND_BY_NAME   = bundle.getString("query.test.findByName");
     String TEST_FIND_ALL       = bundle.getString("query.test.findAll");
     String TEST_UPDATE         = bundle.getString("query.test.update");

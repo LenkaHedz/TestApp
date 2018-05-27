@@ -35,7 +35,7 @@
                             <td>${testList.getTest().getCategory().getDescription()}</td>
                             <td>${testList.getTest().getName()}</td>
                             <td>${testList.getTest().getDescription()}</td>
-                            <td>${testList.datePass}</td>
+                            <td><dateFormatter:formatDate language="${sessionScope.language}" localDate="${testList.datePass}"/></td>
                             <td>${testList.ball}</td>
                             <td>
                                <form method="post" action="${pageContext.request.contextPath}/sendtomail">
@@ -53,8 +53,6 @@
                  <nav aria-label="pagination">
                       <ul class="pagination justify-content-center">
                           <c:forEach var="number" begin="1" end="${sessionScope.numberOfPages}">
-                              <input type='hidden' name='userName' value='${sessionScope.activeUser.name}'/>
-                              <input type='hidden' name='userid' value='${sessionScope.activeUser.id}'/>
                               <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/allusertests?page=${number}">${number}</a></li>
                           </c:forEach>
                       </ul>

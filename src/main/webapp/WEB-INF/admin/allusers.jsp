@@ -11,7 +11,7 @@
             <div class="row">
                  <div class="col-lg-6">
 
-                 <i><fmt:message key="users.count"/> "${requestScope.allUsersCount}"</i>
+                 <i><fmt:message key="users.count"/> "${sessionScope.allUsersCount}"</i>
                  <br>
                  <br>
 
@@ -27,7 +27,7 @@
                         </tr>
                    </thead>
                    <tbody>
-                        <c:forEach items="${requestScope.userList}" var="userList">
+                        <c:forEach items="${sessionScope.userList}" var="userList">
                         <tr>
                             <td>${userList.id}</td>
                             <td>${userList.name}</td>
@@ -37,7 +37,7 @@
                             <td>
                                <form method="post" action="${pageContext.request.contextPath}/allusertests">
                                   <input type='hidden' name='userName' value='${userList.name}'/>
-                                  <input type='hidden' name='page' value='0'/>
+                                  <input type='hidden' name='page' value='1'/>
                                   <button class="btn btn-info" type="submit" name="userid" value="${userList.id}"> <fmt:message key="pasttest.userTests"/></button>
                                </form>
                             </td>
@@ -46,6 +46,14 @@
                    </tbody>
                  </table>
                  </ul>
+
+                 <nav aria-label="pagination">
+                      <ul class="pagination justify-content-center">
+                          <c:forEach var="number" begin="1" end="${sessionScope.numberOfPages}">
+                              <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/allusers?page=${number}">${number}</a></li>
+                          </c:forEach>
+                      </ul>
+                  </nav>
 
                  </div>
             </div>

@@ -17,9 +17,14 @@ public class AllTests implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         TestDaoService testService = new TestDaoService();
-        List<Test> testList = testService.findAll();
-        request.setAttribute(AttributeNames.ALL_TESTS_COUNT, testList.size());
-        request.setAttribute(AttributeNames.TEST_LIST, testList);
+        int numPage = request.getParameter(AttributeNames.PAGE) == null ? 1 : Integer.parseInt(request.getParameter(AttributeNames.PAGE));
+        int num = numPage * AttributeNames.NUM_ROWS - AttributeNames.NUM_ROWS;
+        List<Test> testList = testService.findByNum(num);
+        int allListSize = testService.findAll().size();
+        int numberOfPages = (int)Math.ceil((double) allListSize / AttributeNames.NUM_ROWS);
+        request.getSession().setAttribute(AttributeNames.ALL_TESTS_COUNT, allListSize);
+        request.getSession().setAttribute(AttributeNames.TEST_LIST, testList);
+        request.getSession().setAttribute(AttributeNames.NUMBER_OF_PAGES, numberOfPages);
         return PageNames.ALL_TESTS;
     }
 }

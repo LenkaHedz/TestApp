@@ -8,7 +8,6 @@ F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\imp\JDBCDaoF
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\constants\MailConstants.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\Servlet.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\entity\builder\UserTestBuilder.java
-F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\command\LanguageCommand.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\imp\JDBCAnswerDao.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\entity\builder\UserBuilder.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\entity\Test.java
@@ -47,11 +46,11 @@ F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\command\use
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\listener\SessionListener.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\imp\JDBCUserDao.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\constants\PageNames.java
+F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\view\DateFormatTag.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\TestDao.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\service\TestDaoService.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\AnswerDao.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\UserDao.java
-F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\util\DateFormatTag.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\command\admin\AllUserTests.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\controller\command\admin\AllTests.java
 F:\FINAL PROJECT\TestApp-master\src\main\java\ua\training\model\dao\QuestionDao.java

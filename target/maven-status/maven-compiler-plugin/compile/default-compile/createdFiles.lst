@@ -26,9 +26,7 @@ ua\training\model\entity\UserAnswer.class
 ua\training\controller\command\ExceptionCommand.class
 ua\training\model\dao\AnswerDao.class
 ua\training\controller\command\admin\TestResults.class
-ua\training\controller\util\DateFormatTag.class
 ua\training\model\service\UserAnswerDaoService.class
-ua\training\controller\command\LanguageCommand.class
 ua\training\model\dao\imp\JDBCUserTestDao.class
 ua\training\model\dao\QuestionDao.class
 ua\training\constants\PageNames.class
@@ -43,6 +41,7 @@ ua\training\controller\command\LoginCommand.class
 ua\training\model\dao\TestDao.class
 ua\training\controller\command\admin\AllUserTests.class
 ua\training\model\service\MailSender.class
+ua\training\view\DateFormatTag.class
 ua\training\model\entity\Answer.class
 ua\training\controller\command\user\TestsToGo.class
 ua\training\controller\command\AccessRequired.class

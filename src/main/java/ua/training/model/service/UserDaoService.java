@@ -19,6 +19,8 @@ public class UserDaoService {
 
     public static List<User> findAll() { return dao.findAll(); }
 
+    public static List<User> findByNum(int num) { return dao.findByNum(num); }
+
     public static void update(User user) { dao.update(user); }
 
     public static void delete(long id) { dao.delete(id); }

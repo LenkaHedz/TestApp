@@ -11,7 +11,7 @@
             <div class="row">
                  <div class="col-lg-6">
 
-                 <i><fmt:message key="pasttest.count"/> "${requestScope.allTestsCount}"</i>
+                 <i><fmt:message key="pasttest.count"/> "${sessionScope.allTestsCount}"</i>
                  <br>
                  <br>
 
@@ -25,7 +25,7 @@
                         </tr>
                    </thead>
                    <tbody>
-                        <c:forEach items="${requestScope.testList}" var="testList">
+                        <c:forEach items="${sessionScope.testList}" var="testList">
                         <tr>
                             <td>${testList.id}</td>
                             <td>${testList.category.getDescription()}</td>
@@ -36,6 +36,14 @@
                    </tbody>
                  </table>
                  </ul>
+
+                 <nav aria-label="pagination">
+                      <ul class="pagination justify-content-center">
+                          <c:forEach var="number" begin="1" end="${sessionScope.numberOfPages}">
+                              <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/alltests?page=${number}">${number}</a></li>
+                          </c:forEach>
+                      </ul>
+                  </nav>
 
                  </div>
             </div>
