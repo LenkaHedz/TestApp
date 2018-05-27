@@ -19,17 +19,15 @@
                     <span class="glyphicon glyphicon-check"></span>
                 </li>
 
-                <li class="dropdown">
+                <li>
                     <br>
-                    <form>
-                    <select id="language" name="language" onchange="submit()">
-                       <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                       <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
-
-                    </select>
-                    </form>
+                       <form>
+                           <select id="language" name="language" onchange="submit()">
+                                <option value="en" ${language == 'en' ? 'selected' : ''}><fmt:message key="language.en"/></option>
+                                <option value="ru" ${language == 'ru' ? 'selected' : ''}><fmt:message key="language.ru"/></option>
+                           </select>
+                       </form>
                 </li>
-
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

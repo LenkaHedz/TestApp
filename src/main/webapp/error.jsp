@@ -1,7 +1,7 @@
-<%@ include file="/util/head.jsp" %>
-
 <html>
 <body>
+
+<%@ include file="/util/head.jsp" %>
 
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
@@ -16,10 +16,8 @@
 <div class="imgstype"><img style="height: 300px;" src="${pageContext.request.contextPath}/img/error.jpg" class="rounded mx-auto d-block" alt="Error"></div>
 <br>
 
-<div class="headtext"><h2><i>Error: <%= exception %></i></div>
-</h2>
+<div class="headtext"><h1><fmt:message key="error.page"/></h1></div>
 <br>
-
 
 </body>
 </html>

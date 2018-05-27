@@ -1,7 +1,6 @@
 package ua.training.controller.util;
 
 import ua.training.constants.AttributeNames;
-import ua.training.constants.PropertyFileNames;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -10,7 +9,7 @@ import java.util.ResourceBundle;
 public class ResourceBundleUtil {
 
     public static String getPropertyFromLangBundle(String property, Locale lang) {
-        ResourceBundle langBundle = ResourceBundle.getBundle(PropertyFileNames.LOCALE, lang);
+        ResourceBundle langBundle = ResourceBundle.getBundle(AttributeNames.LOCALE, lang);
         return langBundle.getString(property);
     }
 

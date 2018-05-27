@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface UserTestDao extends GenericDao<UserTest> {
     Optional<UserTest> createById(long userId, long testId);
     List<UserTest> findByUser(long iduser);
+    List<UserTest> findByUserNum(long iduser, int num);
 }

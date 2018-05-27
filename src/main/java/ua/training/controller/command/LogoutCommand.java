@@ -6,6 +6,7 @@ import ua.training.model.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 
+@AccessRequired(roles = {User.Role.ADMIN, User.Role.USER})
 public class LogoutCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {

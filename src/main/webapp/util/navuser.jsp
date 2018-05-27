@@ -15,18 +15,16 @@
 
                 <li>
                     <br>
-                    <c:if test="${isLanguage eq null}">
                        <form>
                            <select id="language" name="language" onchange="submit()">
                                 <option value="en" ${language == 'en' ? 'selected' : ''}><fmt:message key="language.en"/></option>
                                 <option value="ru" ${language == 'ru' ? 'selected' : ''}><fmt:message key="language.ru"/></option>
                            </select>
                        </form>
-                    </c:if>
                 </li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="${pageContext.request.contextPath}/gohome"><fmt:message key="navbar.home" /></a></li>
                 <li><a href="${pageContext.request.contextPath}/usertests"><fmt:message key="sidebar.userTests" /></a></li>
                 <li><a href="${pageContext.request.contextPath}/teststogo"><fmt:message key="sidebar.testsToGo" /></a></li>
                 <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-in"></span> <fmt:message key="navbar.logout"/> </a></li>

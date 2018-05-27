@@ -40,7 +40,8 @@
                             <td>${testList.name}</td>
                             <td>${testList.description}</td>
                             <td>
-                               <form method="post" action="${pageContext.request.contextPath}/usertests">
+                               <form method="post" action="${pageContext.request.contextPath}/gotest">
+                                  <input type='hidden' name='num' value='0'/>
                                   <button class="btn btn-info" type="submit" name="idtest" value="${testList.id}"> <fmt:message key="pasttest.pastTest"/></button>
                                </form>
                             </td>

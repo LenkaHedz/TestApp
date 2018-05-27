@@ -4,7 +4,9 @@ import org.apache.log4j.Logger;
 import ua.training.constants.AttributeNames;
 import ua.training.constants.MailConstants;
 import ua.training.constants.PageNames;
+import ua.training.controller.command.AccessRequired;
 import ua.training.controller.command.Command;
+import ua.training.model.entity.User;
 import ua.training.model.entity.UserTest;
 import ua.training.model.service.MailSender;
 import ua.training.model.service.UserTestDaoService;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
+@AccessRequired(roles = {User.Role.USER})
 public class SendToMail implements Command {
 
     final static Logger logger = Logger.getLogger(SendToMail.class);

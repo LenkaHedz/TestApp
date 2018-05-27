@@ -2,20 +2,19 @@ package ua.training.controller.command;
 
 import ua.training.constants.AttributeNames;
 import ua.training.constants.PageNames;
+import ua.training.controller.util.DataValidator;
 import ua.training.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 
+@AccessRequired(roles = {User.Role.ADMIN, User.Role.USER, User.Role.GUEST})
 public class GoHome implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String userRole = request.getSession().getAttribute(AttributeNames.ROLE).toString();
-        if(userRole.equals(User.Role.ADMIN)) {
-            return PageNames.ADMIN_INDEX;
+        User.Role role = (User.Role) request.getSession().getAttribute(AttributeNames.LOGGED_USER_ROLE);
+        if(role == null){
+            role = User.Role.GUEST;
         }
-        if(userRole.equals(User.Role.USER)) {
-            return PageNames.USER_INDEX;
-        }
-        return PageNames.INDEX;
+        return DataValidator.getIndexByRole(role);
     }
 }

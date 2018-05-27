@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.training.constants.AttributeNames;
 import ua.training.constants.MailConstants;
 import ua.training.constants.PageNames;
+import ua.training.controller.command.AccessRequired;
 import ua.training.controller.command.Command;
 import ua.training.model.entity.*;
 import ua.training.model.service.*;
@@ -11,6 +12,7 @@ import ua.training.model.service.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@AccessRequired(roles = {User.Role.USER})
 public class GoTest implements Command {
 
     final static Logger logger = Logger.getLogger(GoTest.class);

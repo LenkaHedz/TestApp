@@ -1,11 +1,13 @@
 package ua.training.constants;
 
 public interface CommandNames {
-    String LOGIN         = "login";
+    String LOCALE        = "locale";
     String REGISTRATION  = "registration";
-    String LOGOUT        = "logout";
     String EXCEPTION     = "exception";
     String GO_HOME       = "gohome";
+
+    String LOGIN         = "login";
+    String LOGOUT        = "logout";
 
     String USER_TESTS    = "usertests";
     String TESTS_TO_GO   = "teststogo";
@@ -16,5 +18,5 @@ public interface CommandNames {
     String ALL_USERS     = "allusers";
     String ALL_TESTS     = "alltests";
     String TESTS_RESULTS = "testresults";
-    String USER_TESTS_ADMIN = "usertestsadmin";
+    String ALL_USER_TESTS = "allusertests";
 }

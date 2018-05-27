@@ -34,7 +34,7 @@
                             <td>${testList.getTest().getCategory().getDescription()}</td>
                             <td>${testList.getTest().getName()}</td>
                             <td>${testList.getTest().getDescription()}</td>
-                            <td>${testList.datePass}</td>
+                            <td><ctg:format-date date="${testList.datePass}" language="${sessionScope.language}"/></td>
                             <td>${testList.ball}</td>
                             <td>
                                <form method="post" action="${pageContext.request.contextPath}/sendtomail">

@@ -11,6 +11,7 @@ import ua.training.controller.util.ResourceBundleUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
+@AccessRequired(roles = {User.Role.GUEST})
 public class Registration implements Command {
 
     @Override

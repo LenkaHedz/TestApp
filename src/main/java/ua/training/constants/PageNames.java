@@ -7,9 +7,7 @@ public interface PageNames {
     String REDIRECT       = "redirect";
     String REDIRECT_TO    = "redirect:";
 
-    String REDIRECT_INDEX = "redirect:/test/index.jsp";
-
-    String ERROR       = "/error.jsp";
+    String ERROR          = "/error.jsp";
 
     String LOGIN          = "/login.jsp";
     String REGISTRATION   = "/registration.jsp";
@@ -18,7 +16,7 @@ public interface PageNames {
     String ALL_USERS         = "/WEB-INF/admin/allusers.jsp";
     String ALL_TESTS         = "/WEB-INF/admin/alltests.jsp";
     String ADMIN_TEST_RESULT = "/WEB-INF/admin/testresult.jsp";
-    String USER_TESTS_ADMIN  = "/WEB-INF/admin/usertestsadmin.jsp";
+    String ALL_USER_TESTS    = "/WEB-INF/admin/allusertests.jsp";
 
     String USER_INDEX        = "/WEB-INF/user/userindex.jsp";
     String TESTS_TO_GO       = "/WEB-INF/user/teststogo.jsp";

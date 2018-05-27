@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 import java.util.Optional;
 
+@AccessRequired(roles = {User.Role.GUEST})
 public class LoginCommand implements Command {
 
     final static Logger logger = Logger.getLogger(LoginCommand.class);
@@ -43,11 +44,7 @@ public class LoginCommand implements Command {
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_ID, loggedUser.getId());
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_LOGIN, loggedUser.getLogin().toLowerCase());
         request.getSession().setAttribute(AttributeNames.LOGGED_USER_ROLE, loggedUser.getRole());
-        return getPageByRole(loggedUser.getRole());
-    }
-
-    private String getPageByRole(User.Role userRole) {
-        return userRole == User.Role.ADMIN ? PageNames.ADMIN_INDEX : PageNames.USER_INDEX;
+        return DataValidator.getIndexByRole(loggedUser.getRole());
     }
 
     private void setErrorMessage(HttpServletRequest request, String message) {

@@ -7,26 +7,31 @@ import ua.training.constants.CommandNames;
 import ua.training.controller.command.admin.AllTests;
 import ua.training.controller.command.admin.AllUsers;
 import ua.training.controller.command.admin.TestResults;
-import ua.training.controller.command.admin.UserTestsAdmin;
+import ua.training.controller.command.admin.AllUserTests;
 import ua.training.controller.command.user.SearchTest;
 import ua.training.controller.command.user.GoTest;
 import ua.training.controller.command.user.SendToMail;
 import ua.training.controller.command.user.TestsToGo;
 import ua.training.controller.command.user.UserTests;
+import ua.training.controller.util.DataValidator;
+import ua.training.model.entity.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Servlet extends HttpServlet {
-    private Map<String, Command> commands =  new ConcurrentHashMap<>();
+    private final Map<String, Command> commands =  new ConcurrentHashMap<>();
 
     public void init(ServletConfig servletConfig){
         servletConfig.getServletContext().setAttribute(AttributeNames.LOGGED_USERS, new HashSet<String>());
+        commands.put(CommandNames.LOCALE, new LanguageCommand());
         commands.put(CommandNames.REGISTRATION, new Registration());
         commands.put(CommandNames.LOGIN, new LoginCommand());
         commands.put(CommandNames.LOGOUT, new LogoutCommand());
@@ -41,7 +46,7 @@ public class Servlet extends HttpServlet {
 
         commands.put(CommandNames.ALL_USERS, new AllUsers());
         commands.put(CommandNames.ALL_TESTS, new AllTests());
-        commands.put(CommandNames.USER_TESTS_ADMIN, new UserTestsAdmin());
+        commands.put(CommandNames.ALL_USER_TESTS, new AllUserTests());
         commands.put(CommandNames.TESTS_RESULTS, new TestResults());
     }
 
@@ -57,16 +62,30 @@ public class Servlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String path = request.getRequestURI();
-        path = path.replaceAll(PageNames.API , PageNames.REPLACE);
-        Command command = commands.getOrDefault(path,
-                (r)-> PageNames.INDEX);
-        String page = command.execute(request);
-        if(page.contains(PageNames.REDIRECT)){
+        String path = request.getRequestURI().replaceAll(PageNames.API , PageNames.REPLACE);
+        Command command = commands.getOrDefault(path, (r)-> PageNames.REDIRECT_TO + PageNames.INDEX);
+        User.Role role = (User.Role) request.getSession().getAttribute(AttributeNames.LOGGED_USER_ROLE);
+        if(role == null){
+            role = User.Role.GUEST;
+        }
+        String page;
+        if(isAccessAllowed(command, role) ){
+            page = command.execute(request);
+        } else {
+            page = PageNames.REDIRECT_TO + DataValidator.getIndexByRole(role);
+        }
+        if(page.contains(PageNames.REDIRECT_TO)){
             response.sendRedirect(page.replace(PageNames.REDIRECT_TO, PageNames.REPLACE));
         }else {
             request.getRequestDispatcher(page).forward(request, response);
         }
+    }
+
+    public static boolean isAccessAllowed(Command command, User.Role role) {
+        Class<?> commandClass = command.getClass();
+        AccessRequired accessRequired = commandClass.getAnnotation(AccessRequired.class);
+        return Objects.nonNull(accessRequired) &&
+                Arrays.asList(accessRequired.roles()).contains(role);
     }
 
     @Override

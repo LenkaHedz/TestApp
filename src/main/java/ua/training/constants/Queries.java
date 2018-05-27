@@ -39,6 +39,7 @@ public interface Queries {
     String USER_TEST_FIND_BY_ID      = bundle.getString("query.user_test.findById");
     String USER_TEST_FIND_ALL        = bundle.getString("query.user_test.findAll");
     String USER_TEST_FIND_BY_USER_ID = bundle.getString("query.user_test.findByUserId");
+    String USER_TEST_FIND_BY_USER_ID_NUM = bundle.getString("query.user_test.findByUserIdNum");
     String USER_TEST_FIND_BY_VALUE   = bundle.getString("query.user_test.findByValue");
     String USER_TEST_UPDATE          = bundle.getString("query.user_test.update");
     String USER_TEST_DELETE          = bundle.getString("query.user_test.delete");

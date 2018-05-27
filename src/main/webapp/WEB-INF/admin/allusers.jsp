@@ -35,7 +35,9 @@
                             <td>${userList.password}</td>
                             <td>${userList.ball}</td>
                             <td>
-                               <form method="post" action="${pageContext.request.contextPath}/usertestsadmin">
+                               <form method="post" action="${pageContext.request.contextPath}/allusertests">
+                                  <input type='hidden' name='userName' value='${userList.name}'/>
+                                  <input type='hidden' name='page' value='0'/>
                                   <button class="btn btn-info" type="submit" name="userid" value="${userList.id}"> <fmt:message key="pasttest.userTests"/></button>
                                </form>
                             </td>

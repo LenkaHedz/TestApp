@@ -11,13 +11,23 @@ public interface AttributeNames {
     String USER               = "user";
     String GUEST              = "Guest";
 
+    String LANGUAGE = "language";
+    String LOCALE   = "locale";
+    String REFERER  = "referer";
+    String RU = "ru";
+    String EN = "en";
+    String FORMAT_DATE_RU = "dd.MM.yyyy";
+    String FORMAT_DATE_EN = "MM.dd.yyyy";
+
+    int NUM_ROWS = 5;
+    String PAGE = "page";
+    String NUMBER_OF_PAGES = "numberOfPages";
+    String ACTIVE_USER = "activeUser";
+
     String LOGGED_USER_LOGIN  = "loggedUserLogin";
     String LOGGED_USER_ROLE   = "loggedUserRole";
     String LOGGED_USER_ID     = "loggedUserId";
     String LOGGED_USERS       = "loggedUsers";
-    String LOGGED_USERS_COUNT = "countOfUsers";
-
-    String LANGUAGE           = "language";
 
     String WRONG_INPUT_MESSAGE = "wrongUserInputMessage";
 
@@ -30,6 +40,7 @@ public interface AttributeNames {
     String ID_TEST         = "idtest";
     String USER_ID         = "userid";
     String TEST_NAME       = "testName";
+    String USER_NAME       = "userName";
     String USER_TEST_ID    = "usertestid";
     String ANSWER_ID       = "answerid";
     String ALL_BALL_COUNT  = "allBallCount";
