@@ -15,11 +15,14 @@ import java.util.List;
 public class SearchTest implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String name = request.getParameter(AttributeNames.NAME);
         TestDaoService testService = new TestDaoService();
+        String name = request.getParameter(AttributeNames.NAME);
         List<Test> testList = testService.findByName(name);
-        request.setAttribute(AttributeNames.ALL_TESTS_COUNT, testList.size());
-        request.setAttribute(AttributeNames.TEST_LIST, testList);
+        int allListSize = testList.size();
+        request.getSession().setAttribute(AttributeNames.ALL_TESTS_COUNT, allListSize);
+        request.getSession().setAttribute(AttributeNames.TEST_LIST, testList);
+        request.getSession().setAttribute(AttributeNames.NUMBER_OF_PAGES, 1);
         return PageNames.TESTS_TO_GO;
+
     }
 }

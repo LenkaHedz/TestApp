@@ -26,6 +26,7 @@
                             <th><fmt:message key="pasttest.datepass"/></th>
                             <th><fmt:message key="pasttest.ball"/></th>
                             <th><fmt:message key="pasttest.action"/></th>
+                            <th><fmt:message key="pasttest.action"/></th>
                         </tr>
                    </thead>
                    <tbody>
@@ -39,9 +40,16 @@
                             <td>${testList.ball}</td>
                             <td>
                                <form method="post" action="${pageContext.request.contextPath}/sendtomail">
-                              <input type='hidden' name='userName' value='${sessionScope.activeUser.name}'/>
-                              <input type='hidden' name='userid' value='${sessionScope.activeUser.id}'/>
+                                  <input type='hidden' name='userName' value='${sessionScope.activeUser.name}'/>
+                                  <input type='hidden' name='userid' value='${sessionScope.activeUser.id}'/>
                                   <button class="btn btn-info" type="submit" name="usertestid" value="${testList.id}"> <fmt:message key="pasttest.sendOnMail"/></button>
+                               </form>
+                            </td>
+                            <td>
+                               <form method="post" action="${pageContext.request.contextPath}/results">
+                                  <input type='hidden' name='testName' value='${testList.getTest().getName()}'/>
+                                  <input type='hidden' name='allBallCount' value='${testList.ball}'/>
+                                  <button class="btn btn-info" type="submit" name="usertestid" value="${testList.id}"> <fmt:message key="pasttest.showResilts"/></button>
                                </form>
                             </td>
                         </tr>

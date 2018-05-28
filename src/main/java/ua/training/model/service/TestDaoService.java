@@ -1,5 +1,7 @@
 package ua.training.model.service;
 
+import org.apache.log4j.Logger;
+import ua.training.controller.command.LoginCommand;
 import ua.training.model.dao.DaoFactory;
 import ua.training.model.dao.TestDao;
 import ua.training.model.entity.Test;
@@ -8,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class TestDaoService {
+
+    final static Logger logger = Logger.getLogger(TestDaoService.class);
 
     private final static TestDao dao = DaoFactory.getInstance().createTestDao();
 
@@ -29,6 +33,7 @@ public class TestDaoService {
         try {
             dao.close();
         } catch (Exception e)  {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

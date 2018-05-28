@@ -1,5 +1,6 @@
-package ua.training.model.service;
+ package ua.training.model.service;
 
+import org.apache.log4j.Logger;
 import ua.training.model.dao.DaoFactory;
 import ua.training.model.dao.UserDao;
 import ua.training.model.entity.User;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDaoService {
+
+    final static Logger logger = Logger.getLogger(UserDaoService.class);
 
     private final static UserDao dao = DaoFactory.getInstance().createUserDao();
 
@@ -35,6 +38,7 @@ public class UserDaoService {
         try {
             dao.close();
         } catch (Exception e)  {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

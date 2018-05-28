@@ -23,6 +23,8 @@ public interface AttributeNames {
     String PAGE = "page";
     String NUMBER_OF_PAGES = "numberOfPages";
     String ACTIVE_USER = "activeUser";
+    String CATEGORIES = "categories";
+    String CATEGORY = "category";
 
     String LOGGED_USER_LOGIN  = "loggedUserLogin";
     String LOGGED_USER_ROLE   = "loggedUserRole";
@@ -46,8 +48,9 @@ public interface AttributeNames {
     String ALL_BALL_COUNT  = "allBallCount";
 
     String USER_ANSWER_LIST = "userAnswerList";
-    String QUESTION_LIST = "questionList";
-    String QUESTION      = "question";
-    String ANSWER_LIST   = "answerList";
+    String QUESTION_LIST    = "questionList";
+    String QUESTION         = "question";
+    String ANSWER_LIST      = "answerList";
+    String CORRECT_ANSWERS  = "correctAnswers";
 
 }

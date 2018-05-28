@@ -1,5 +1,7 @@
 package ua.training.model.dao.imp;
 
+import org.apache.log4j.Logger;
+import ua.training.controller.command.LoginCommand;
 import ua.training.model.dao.UserDao;
 import ua.training.constants.Queries;
 import ua.training.constants.ColumnNames;
@@ -12,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class JDBCUserDao implements UserDao {
+
+    final static Logger logger = Logger.getLogger(JDBCUserDao.class);
 
     private Connection connection;
 
@@ -28,6 +32,7 @@ public class JDBCUserDao implements UserDao {
             ps.setString(4 , user.getName());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -41,6 +46,7 @@ public class JDBCUserDao implements UserDao {
             ps.setString(4 , name);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -55,6 +61,7 @@ public class JDBCUserDao implements UserDao {
                 user = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return user;
@@ -71,6 +78,7 @@ public class JDBCUserDao implements UserDao {
                 user = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return user;
@@ -95,6 +103,7 @@ public class JDBCUserDao implements UserDao {
                 resultList.add(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return resultList;
@@ -110,6 +119,7 @@ public class JDBCUserDao implements UserDao {
             ps.setLong(6 , user.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -120,6 +130,7 @@ public class JDBCUserDao implements UserDao {
             ps.setLong(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -129,6 +140,7 @@ public class JDBCUserDao implements UserDao {
         try {
             connection.close();
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -142,6 +154,7 @@ public class JDBCUserDao implements UserDao {
                 return true;
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return false;
@@ -156,6 +169,7 @@ public class JDBCUserDao implements UserDao {
                 return rs.getInt(ColumnNames.USER_TEST_BALL);
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return 0;
@@ -171,6 +185,7 @@ public class JDBCUserDao implements UserDao {
                 resultList.add(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return resultList;

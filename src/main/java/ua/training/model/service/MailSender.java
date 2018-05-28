@@ -1,5 +1,6 @@
 package ua.training.model.service;
 
+import org.apache.log4j.Logger;
 import ua.training.constants.MailConstants;
 
 import javax.mail.*;
@@ -9,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class MailSender {
+    final static Logger logger = Logger.getLogger(MailSender.class);
 
     public static void send(String subject, String text, String toEmail) {
         Properties props = new Properties();
@@ -20,7 +22,7 @@ public class MailSender {
 
         Session session = Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(MailConstants.address_from, MailConstants.PASSWORD);
+            return new PasswordAuthentication(MailConstants.address_from, MailConstants.PASSWORD);
             }
         });
 
@@ -32,8 +34,10 @@ public class MailSender {
             message.setText(text);
             Transport.send(message);
         } catch (MessagingException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         } catch (UnsupportedEncodingException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

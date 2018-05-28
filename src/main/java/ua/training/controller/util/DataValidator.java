@@ -1,12 +1,14 @@
 package ua.training.controller.util;
 
 import org.apache.log4j.Logger;
+import ua.training.constants.AttributeNames;
 import ua.training.constants.PageNames;
 import ua.training.controller.Servlet;
 import ua.training.controller.command.AccessRequired;
 import ua.training.controller.command.Command;
 import ua.training.controller.command.LoginCommand;
 import ua.training.model.entity.User;
+import ua.training.model.service.UserAnswerDaoService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -36,6 +38,21 @@ public class DataValidator {
             return PageNames.USER_INDEX;
         }
         return PageNames.INDEX;
+    }
+
+    public static int recordAnswers(HttpServletRequest request, long usertestid){
+        int num = (int) request.getSession().getAttribute(AttributeNames.NUM);
+        if (request.getParameterValues(AttributeNames.ANSWER_ID) == null) {
+          return num;
+        }
+        String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
+        if (answeridList.length == (int) request.getSession().getAttribute(AttributeNames.CORRECT_ANSWERS)) {
+            for (String answerid : answeridList) {
+                UserAnswerDaoService.createById(usertestid, Long.parseLong(answerid));
+            }
+            num = num + 1;
+        }
+        return num;
     }
 
 }

@@ -11,10 +11,10 @@
             <div class="row">
                  <div class="col-lg-7">
 
-                 <div class="headtext"><h1><c:out value="${requestScope.testName}"/></h1></div>
+                 <div class="headtext"><h1><c:out value="${sessionScope.testName}"/></h1></div>
                  <br>
 
-                 <i><fmt:message key="pasttest.ball"/> "${requestScope.allBallCount}"</i>
+                 <i><fmt:message key="pasttest.ball"/> "${sessionScope.allBallCount}"</i>
                  <br>
                  <br>
 
@@ -27,7 +27,7 @@
                         </tr>
                    </thead>
                    <tbody>
-                        <c:forEach items="${requestScope.userAnswerList}" var="userAnswerList">
+                        <c:forEach items="${sessionScope.userAnswerList}" var="userAnswerList">
                         <tr>
                             <td>${userAnswerList.id}</td>
                             <td>${userAnswerList.getAnswer().getName()}</td>

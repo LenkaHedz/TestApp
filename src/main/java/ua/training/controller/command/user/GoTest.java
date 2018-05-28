@@ -6,6 +6,7 @@ import ua.training.constants.MailConstants;
 import ua.training.constants.PageNames;
 import ua.training.controller.command.AccessRequired;
 import ua.training.controller.command.Command;
+import ua.training.controller.util.DataValidator;
 import ua.training.model.entity.*;
 import ua.training.model.service.*;
 
@@ -24,48 +25,48 @@ public class GoTest implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        if(request.getParameter(AttributeNames.ID_TEST) == null){
-            List<Test> testList = testService.findAll();
-            request.setAttribute(AttributeNames.ALL_TESTS_COUNT, testList.size());
-            request.setAttribute(AttributeNames.TEST_LIST, testList);
-            return PageNames.TESTS_TO_GO;
-        }
-        int num = Integer.parseInt(request.getParameter(AttributeNames.NUM));
-        long testid = Long.parseLong(request.getParameter(AttributeNames.ID_TEST));
-        Test test = testService.findById(testid).get();
+        int num = 1;
         UserTest userTest;
         long usertestid;
-        if(num == 0){
-            long userid = Long.parseLong(request.getSession().getAttribute(AttributeNames.LOGGED_USER_ID).toString());
+        long userid;
+        List<Question> questionList;
+        if(request.getParameter(AttributeNames.ID_TEST) != null){
+            long testid = Long.parseLong(request.getParameter(AttributeNames.ID_TEST));
+            userid = Long.parseLong(request.getSession().getAttribute(AttributeNames.LOGGED_USER_ID).toString());
             userTest = userTestService.createById(userid, testid).get();
             usertestid = userTest.getId();
+            Test test = testService.findById(testid).get();
+            questionList = questionService.findByIdTest(testid);
+            request.getSession().setAttribute(AttributeNames.ID_TEST, test.getId());
+            request.getSession().setAttribute(AttributeNames.TEST_NAME, test.getName());
+            request.getSession().setAttribute(AttributeNames.USER_TEST_ID, usertestid);
+            request.getSession().setAttribute(AttributeNames.QUESTION_LIST, questionList);
+        } else if (request.getSession().getAttribute(AttributeNames.USER_TEST_ID) != null) {
+            usertestid = (long) request.getSession().getAttribute(AttributeNames.USER_TEST_ID);
+            num = DataValidator.recordAnswers(request, usertestid);
         } else {
-            usertestid = Long.parseLong(request.getParameter(AttributeNames.USER_TEST_ID));
-            userTest = userTestService.findById(usertestid).get();
-            String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
-            for (String answerid: answeridList) {
-                userAnswerService.createById(usertestid, Long.parseLong(answerid));
-            }
+            return PageNames.TESTS_TO_GO;
         }
-        List<Question> questionList = questionService.findByIdTest(testid);
+        questionList = (List<Question>) request.getSession().getAttribute(AttributeNames.QUESTION_LIST);
         if(num == questionList.size()){
+            userTest = userTestService.findById(usertestid).get();
             MailSender.send(MailConstants.THEME_NAME + userTest.getTest().getName(), MailConstants.THEME_TEXT + userTest.getBall(), userTest.getUser().getLogin());
             logger.error(MailConstants.THEME_NAME + userTest.getTest().getName());
             List<UserAnswer> userAnswerList = userAnswerService.findByUserTestId(usertestid);
-            request.setAttribute(AttributeNames.TEST_NAME, test.getName());
-            request.setAttribute(AttributeNames.ALL_BALL_COUNT, userTest.getBall());
-            request.setAttribute(AttributeNames.USER_ANSWER_LIST, userAnswerList);
+            request.getSession().setAttribute(AttributeNames.ALL_BALL_COUNT, userTest.getBall());
+            request.getSession().setAttribute(AttributeNames.USER_ANSWER_LIST, userAnswerList);
             return PageNames.USER_TEST_RESULT;
         }
         Question question = questionList.get(num);
         List<Answer> answerList = answerService.findByIdQuestion(question.getId());
-        request.setAttribute(AttributeNames.NUM, num+1);
-        request.setAttribute(AttributeNames.ID_TEST, test.getId());
-        request.setAttribute(AttributeNames.TEST_NAME, test.getName());
-        request.setAttribute(AttributeNames.USER_TEST_ID, usertestid);
-        request.setAttribute(AttributeNames.QUESTION_LIST, questionList);
-        request.setAttribute(AttributeNames.QUESTION, question);
-        request.setAttribute(AttributeNames.ANSWER_LIST, answerList);
+        int correctAnswers = 0;
+        for(Answer answer:answerList){
+            correctAnswers = correctAnswers + answer.getBall() > 0 ? 1 : 0 ;
+        }
+        request.getSession().setAttribute(AttributeNames.NUM, num);
+        request.getSession().setAttribute(AttributeNames.QUESTION, question);
+        request.getSession().setAttribute(AttributeNames.ANSWER_LIST, answerList);
+        request.getSession().setAttribute(AttributeNames.CORRECT_ANSWERS, correctAnswers);
         return PageNames.TEST_PAGE;
     }
 }

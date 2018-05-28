@@ -22,6 +22,11 @@ public interface Queries {
     String TEST_FIND_ALL       = bundle.getString("query.test.findAll");
     String TEST_UPDATE         = bundle.getString("query.test.update");
     String TEST_DELETE         = bundle.getString("query.test.delete");
+    String TEST_DELETE_USER_ANSWER = bundle.getString("query.test.deleteUserAnswer");
+    String TEST_DELETE_USER_TEST   = bundle.getString("query.test.deleteUserTest");
+    String TEST_DELETE_ANSWER      = bundle.getString("query.test.deleteAnswer");
+    String TEST_DELETE_QUESTION    = bundle.getString("query.test.deleteQuestion");
+
 
     String QUESTION_CREATE     = bundle.getString("query.question.create");
     String QUESTION_FIND_BY_ID = bundle.getString("query.question.findById");

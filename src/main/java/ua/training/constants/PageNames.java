@@ -15,7 +15,7 @@ public interface PageNames {
     String ADMIN_INDEX       = "/WEB-INF/admin/adminindex.jsp";
     String ALL_USERS         = "/WEB-INF/admin/allusers.jsp";
     String ALL_TESTS         = "/WEB-INF/admin/alltests.jsp";
-    String ADMIN_TEST_RESULT = "/WEB-INF/admin/testresult.jsp";
+    String ADMIN_RESULTS     = "/WEB-INF/admin/results.jsp";
     String ALL_USER_TESTS    = "/WEB-INF/admin/allusertests.jsp";
 
     String USER_INDEX        = "/WEB-INF/user/userindex.jsp";

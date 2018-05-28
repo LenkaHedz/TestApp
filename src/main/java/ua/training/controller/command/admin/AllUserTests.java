@@ -11,7 +11,6 @@ import ua.training.model.service.UserTestDaoService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Optional;
 
 @AccessRequired(roles = {User.Role.ADMIN})
 public class AllUserTests implements Command {

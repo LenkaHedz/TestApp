@@ -1,5 +1,6 @@
 package ua.training.model.dao.imp;
 
+import org.apache.log4j.Logger;
 import ua.training.model.dao.TestDao;
 import ua.training.constants.ColumnNames;
 import ua.training.constants.Queries;
@@ -12,6 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class JDBCTestDao implements TestDao {
+
+    final static Logger logger = Logger.getLogger(JDBCTestDao.class);
 
     private Connection connection;
 
@@ -27,6 +30,7 @@ public class JDBCTestDao implements TestDao {
             ps.setString(3 , test.getDescription());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -41,6 +45,7 @@ public class JDBCTestDao implements TestDao {
                 test = Optional.of(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return test;
@@ -65,6 +70,7 @@ public class JDBCTestDao implements TestDao {
                 resultList.add(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return resultList;
@@ -80,6 +86,7 @@ public class JDBCTestDao implements TestDao {
                 resultList.add(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return resultList;
@@ -94,6 +101,7 @@ public class JDBCTestDao implements TestDao {
                 resultList.add(extractFromResultSet(rs));
             }
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
         return resultList;
@@ -108,16 +116,44 @@ public class JDBCTestDao implements TestDao {
             ps.setLong(4 , test.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
 
+    /**
+     * Command for Admin:
+     * Delete Test without autocommit
+     * 1) delete users answers on test
+     * 2) delete users tests
+     * 3) delete tests answers
+     * 4) delete tests questions
+     * 5) delete test
+     * Set autocommit true
+     */
     @Override
     public void delete(long id) {
-        try (PreparedStatement ps = connection.prepareStatement(Queries.TEST_DELETE)){
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement ps = connection.prepareStatement(Queries.TEST_DELETE_USER_ANSWER);
             ps.setLong(1, id);
             ps.executeUpdate();
+            ps = connection.prepareStatement(Queries.TEST_DELETE_USER_TEST);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(Queries.TEST_DELETE_ANSWER);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(Queries.TEST_DELETE_QUESTION);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(Queries.TEST_DELETE);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
         } catch (SQLException e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }
@@ -127,6 +163,7 @@ public class JDBCTestDao implements TestDao {
         try {
             connection.close();
         } catch (Exception e) {
+            logger.error(e);
             throw new RuntimeException(e);
         }
     }

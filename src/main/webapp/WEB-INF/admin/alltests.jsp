@@ -22,6 +22,7 @@
                             <th><fmt:message key="pasttest.category"/></th>
                             <th><fmt:message key="pasttest.name"/></th>
                             <th><fmt:message key="pasttest.description"/></th>
+                            <th><fmt:message key="pasttest.action"/></th>
                         </tr>
                    </thead>
                    <tbody>
@@ -31,6 +32,11 @@
                             <td>${testList.category.getDescription()}</td>
                             <td>${testList.name}</td>
                             <td>${testList.description}</td>
+                            <td>
+                               <form method="post" action="${pageContext.request.contextPath}/deletetest">
+                                  <button class="btn btn-info" type="submit" name="testid" value="${testList.id}"> <fmt:message key="sidebar.delete"/></button>
+                               </form>
+                            </td>
                         </tr>
                         </c:forEach>
                    </tbody>
