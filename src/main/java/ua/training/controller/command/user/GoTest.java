@@ -30,6 +30,9 @@ public class GoTest implements Command {
         long usertestid;
         long userid;
         List<Question> questionList;
+        /**
+         * The first page of test
+         */
         if(request.getParameter(AttributeNames.ID_TEST) != null){
             long testid = Long.parseLong(request.getParameter(AttributeNames.ID_TEST));
             userid = Long.parseLong(request.getSession().getAttribute(AttributeNames.LOGGED_USER_ID).toString());
@@ -48,7 +51,11 @@ public class GoTest implements Command {
             return PageNames.TESTS_TO_GO;
         }
         questionList = (List<Question>) request.getSession().getAttribute(AttributeNames.QUESTION_LIST);
-        if(num == questionList.size()){
+        /**
+         * The first page of test
+         */
+        System.out.println(num + " " + (questionList.size()+1));
+        if(num == (questionList.size()+1)){
             userTest = userTestService.findById(usertestid).get();
             MailSender.send(MailConstants.THEME_NAME + userTest.getTest().getName(), MailConstants.THEME_TEXT + userTest.getBall(), userTest.getUser().getLogin());
             logger.error(MailConstants.THEME_NAME + userTest.getTest().getName());
@@ -57,7 +64,7 @@ public class GoTest implements Command {
             request.getSession().setAttribute(AttributeNames.USER_ANSWER_LIST, userAnswerList);
             return PageNames.USER_TEST_RESULT;
         }
-        Question question = questionList.get(num);
+        Question question = questionList.get(num-1);
         List<Answer> answerList = answerService.findByIdQuestion(question.getId());
         int correctAnswers = 0;
         for(Answer answer:answerList){

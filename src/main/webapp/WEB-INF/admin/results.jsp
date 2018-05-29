@@ -14,7 +14,7 @@
                  <div class="headtext"><h1><c:out value="${sessionScope.activeUser.name}"/></h1></div>
                  <br>
 
-                 <div class="headtext"><h1><c:out value="${sessionScope.testName}"/></h1></div>
+                 <div class="headtext"><h2><c:out value="${sessionScope.testName}"/></h2></div>
                  <br>
 
                  <i><fmt:message key="pasttest.ball"/> "${sessionScope.allBallCount}"</i>

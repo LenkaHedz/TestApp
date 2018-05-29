@@ -43,7 +43,10 @@ public class DataValidator {
     public static int recordAnswers(HttpServletRequest request, long usertestid){
         int num = (int) request.getSession().getAttribute(AttributeNames.NUM);
         if (request.getParameterValues(AttributeNames.ANSWER_ID) == null) {
-          return num;
+            return num;
+        }
+        if (request.getParameterValues(AttributeNames.CONFIRM) == null) {
+            return num;
         }
         String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
         if (answeridList.length == (int) request.getSession().getAttribute(AttributeNames.CORRECT_ANSWERS)) {

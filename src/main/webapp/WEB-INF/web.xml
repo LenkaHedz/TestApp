@@ -46,7 +46,7 @@
 
     <context-param>
         <param-name>language</param-name>
-        <param-value>en</param-value>
+        <param-value>en_US</param-value>
     </context-param>
 
     <jsp-config>

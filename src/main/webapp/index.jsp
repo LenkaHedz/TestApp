@@ -23,8 +23,8 @@
                     <br>
                        <form>
                            <select id="language" name="language" onchange="submit()">
-                                <option value="en" ${language == 'en' ? 'selected' : ''}><fmt:message key="language.en"/></option>
-                                <option value="ru" ${language == 'ru' ? 'selected' : ''}><fmt:message key="language.ru"/></option>
+                                <option value="en_US" ${language == 'en_US' ? 'selected' : ''}><fmt:message key="language.en"/></option>
+                                <option value="ru_RU" ${language == 'ru_RU' ? 'selected' : ''}><fmt:message key="language.ru"/></option>
                            </select>
                        </form>
                 </li>

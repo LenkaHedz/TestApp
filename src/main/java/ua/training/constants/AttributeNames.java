@@ -14,8 +14,8 @@ public interface AttributeNames {
     String LANGUAGE = "language";
     String LOCALE   = "locale";
     String REFERER  = "referer";
-    String RU = "ru";
-    String EN = "en";
+    String RU = "ru_RU";
+    String EN = "en_US";
     String FORMAT_DATE_RU = "dd.MM.yyyy";
     String FORMAT_DATE_EN = "MM.dd.yyyy";
 
@@ -47,6 +47,7 @@ public interface AttributeNames {
     String ANSWER_ID       = "answerid";
     String ALL_BALL_COUNT  = "allBallCount";
 
+    String CONFIRM          = "confirm";
     String USER_ANSWER_LIST = "userAnswerList";
     String QUESTION_LIST    = "questionList";
     String QUESTION         = "question";

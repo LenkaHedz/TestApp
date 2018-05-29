@@ -15,7 +15,7 @@
          <br>
          <div class="headtext"><h3><c:out value="${sessionScope.num}"/>. <c:out value="${sessionScope.question.name}"/></h3></div>
          <br>
-         <div class="headtext"><h3><fmt:message key="answers.count"/> <c:out value="${sessionScope.correctAnswers}"/></h3></div>
+         <div class="headtext"><h4><fmt:message key="answers.count"/> <c:out value="${sessionScope.correctAnswers}"/></h4></div>
          <br>
 
             <form method="post" action="${pageContext.request.contextPath}/gotest">
@@ -26,7 +26,7 @@
                   </div>
                </c:forEach>
                <br>
-               <button class="btn btn-info" type="submit"> <fmt:message key="registration.button.confirm"/></button>
+               <button class="btn btn-info" type="submit" name="confirm" value="1"> <fmt:message key="registration.button.confirm"/></button>
              </form>
 
          </div>
