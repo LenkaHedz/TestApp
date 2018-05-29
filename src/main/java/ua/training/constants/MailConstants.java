@@ -12,7 +12,7 @@ public interface MailConstants {
         String PORT_NAME    = "mail.smtp.port";
         String PORT_VALUE   = "465";
         String address_from = "lenkahedz@gmail.com";
-        String PASSWORD     = "2951181r";
+        String PASSWORD     = "********";
         String PERSONAL     = "Admin";
         String THEME_NAME   = "Results by test: ";
         String THEME_TEXT   = "Your total ball is: ";
