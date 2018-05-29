@@ -17,7 +17,6 @@
          <br>
          <div class="headtext"><h4><fmt:message key="answers.count"/> <c:out value="${sessionScope.correctAnswers}"/></h4></div>
          <br>
-
             <form method="post" action="${pageContext.request.contextPath}/gotest">
                <c:forEach items="${sessionScope.answerList}" var="answerList">
                   <div class="form-check">

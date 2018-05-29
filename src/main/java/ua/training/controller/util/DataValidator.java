@@ -40,22 +40,4 @@ public class DataValidator {
         return PageNames.INDEX;
     }
 
-    public static int recordAnswers(HttpServletRequest request, long usertestid){
-        int num = (int) request.getSession().getAttribute(AttributeNames.NUM);
-        if (request.getParameterValues(AttributeNames.ANSWER_ID) == null) {
-            return num;
-        }
-        if (request.getParameterValues(AttributeNames.CONFIRM) == null) {
-            return num;
-        }
-        String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
-        if (answeridList.length == (int) request.getSession().getAttribute(AttributeNames.CORRECT_ANSWERS)) {
-            for (String answerid : answeridList) {
-                UserAnswerDaoService.createById(usertestid, Long.parseLong(answerid));
-            }
-            num = num + 1;
-        }
-        return num;
-    }
-
 }

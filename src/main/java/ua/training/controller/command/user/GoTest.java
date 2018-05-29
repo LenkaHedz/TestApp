@@ -46,7 +46,7 @@ public class GoTest implements Command {
             request.getSession().setAttribute(AttributeNames.QUESTION_LIST, questionList);
         } else if (request.getSession().getAttribute(AttributeNames.USER_TEST_ID) != null) {
             usertestid = (long) request.getSession().getAttribute(AttributeNames.USER_TEST_ID);
-            num = DataValidator.recordAnswers(request, usertestid);
+            num = recordAnswers(request, usertestid);
         } else {
             return PageNames.TESTS_TO_GO;
         }
@@ -75,5 +75,25 @@ public class GoTest implements Command {
         request.getSession().setAttribute(AttributeNames.ANSWER_LIST, answerList);
         request.getSession().setAttribute(AttributeNames.CORRECT_ANSWERS, correctAnswers);
         return PageNames.TEST_PAGE;
+    }
+
+    private int recordAnswers(HttpServletRequest request, long usertestid){
+        int num = (int) request.getSession().getAttribute(AttributeNames.NUM);
+        if (request.getParameterValues(AttributeNames.ANSWER_ID) == null) {
+            return num;
+        }
+        if (request.getParameter(AttributeNames.CONFIRM) == null) {
+            return num;
+        }
+        if(request.getParameter(AttributeNames.CONFIRM).equals("1")) {
+            String[] answeridList = request.getParameterValues(AttributeNames.ANSWER_ID);
+            if (answeridList.length == (int) request.getSession().getAttribute(AttributeNames.CORRECT_ANSWERS)) {
+                for (String answerid : answeridList) {
+                    UserAnswerDaoService.createById(usertestid, Long.parseLong(answerid));
+                }
+                num = num + 1;
+            }
+        }
+        return num;
     }
 }
